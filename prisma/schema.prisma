@@ -1,0 +1,187 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum roles {
+  ADMIN
+  APRENDIZ
+}
+
+enum estados {
+  BORRADOR
+  EN_PROGRESO
+  TERMINADO
+}
+
+enum tipo_formulario {
+  FORM500
+  FORM510
+}
+
+model usuario {
+  id                Int                @id @default(autoincrement())
+  nombre_usuario    String
+  correo            String             @unique
+  contrasena        String
+  rol               roles              @default(APRENDIZ)
+  fecha_de_creacion DateTime           @default(now())
+  ultima_sesion     DateTime?
+  documentos        documento[]
+  formularios_500   formulario_500[]
+
+  @@index([rol])
+}
+
+model documento {
+  id             Int             @id @default(autoincrement())
+  usuario_id     Int
+  formulario_id  Int?
+  tipo_documento String
+  nombre_archivo String
+  ruta           String
+  fecha_subida   DateTime        @default(now())
+  formulario_500 formulario_500? @relation(fields: [formulario_id], references: [id])
+  propietario    usuario         @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
+
+  @@index([usuario_id, formulario_id, tipo_documento, fecha_subida])
+}
+
+model formulario_500 {
+  id Int @id @default(autoincrement())
+  usuario_id                             Int
+  tipo_formulario                        tipo_formulario
+  estado                                 estados                @default(BORRADOR)
+  fecha_de_creacion                      DateTime               @default(now())
+  fecha_actualizacion                    DateTime               @updatedAt
+  progreso                               Int?
+  paso_actual                            Int?
+  checklist                              Json
+
+  // SECCIÓN 1 — Información General
+  numero_formulario Int?
+  clase_importador Int?
+  tipo_declaracion Int?
+  codigo Int?
+  numero_formulario_anterior Int?
+  anio_declaracion_exportacion Int?
+  declaracion_exportacion Int?
+  anio_declaracion Int?
+  codigo_direccion_seccional Int?
+  codigo_direccion_seccional_exportacion Int?
+
+  // SECCIÓN 2 — Importador
+  nit_importador String?
+  dv_importador Int?
+  razon_social_importador String?
+  direccion_seccional_importador Int?
+  direccion_importador String?
+  telefono_importador String?
+  codigo_departamento Int?
+  codigo_municipio Int?
+  nit_secundario String?
+  dv_secundario Int?
+
+  // SECCIÓN 3 — Declarante
+  razon_social_declarante String?
+  tipo_usuario Int?
+  codigo_usuario String?
+  documento_declarante String?
+  nombre_declarante String?
+
+  // SECCIÓN 4 — Exportador
+  nombre_exportador String?
+  ciudad_exportador String?
+  pais_exportador Int?
+  direccion_exportador String?
+  email_exportador String?
+  pais_procedencia Int?
+
+  // SECCIÓN 5 — Transporte
+  lugar_ingreso_mercancias Int?
+  codigo_deposito Int?
+  manifiesto_carga String?
+  fecha_llegada DateTime?
+  documento_transporte String?
+  numero_factura String?
+  fecha_factura DateTime?
+  modo_transporte Int?
+  bandera_transporte Int?
+  destino_mercancia Int?
+  empresa_transportadora String?
+  tasa_cambio Decimal?
+
+  // SECCIÓN 7 — Valores USD
+  valor_fob Decimal?
+  valor_fletes Decimal?
+  valor_seguros Decimal?
+  valor_otros_gastos Decimal?
+  suma_gastos Decimal?
+  ajuste_valor Decimal?
+  valor_aduana Decimal?
+
+  // SECCIÓN 8 — Autoliquidación (simplificada)
+  base_gravable Decimal?
+  porcentaje_arancel Decimal?
+  valor_arancel Decimal?
+  porcentaje_iva Decimal?
+  valor_iva Decimal?
+  total_liquidado Decimal?
+
+  // SECCIÓN 9 — Pagos
+  valor_pagos_anteriores Decimal?
+  recibo_pago_anterior String?
+  fecha_pago_anterior DateTime?
+  pago_total Decimal?
+  adhesivo_banco String?
+  sello_banco String?
+
+  // SECCIÓN 10 — DIAN
+  actuacion_aduanera String?
+  espacio_ministerio String?
+  numero_aceptacion String?
+  fecha_aceptacion DateTime?
+  numero_levante String?
+  fecha_levante DateTime?
+  nombre_funcionario String?
+  documento_funcionario String?
+
+  // Relación con mercancías
+  items formulario_500_items[]
+  propietario                            usuario                @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
+  documentos                             documento[]
+}
+
+model formulario_500_items {
+  id Int @id @default(autoincrement())
+
+  formulario_id Int
+  formulario formulario_500 @relation(fields: [formulario_id], references: [id])
+
+  subpartida_arancelaria String?
+  codigo_complementario String?
+  codigo_suplementario String?
+  modalidad Int?
+  numero_cuotas Int?
+  valor_cuota_usd Decimal?
+  periodicidad_pago String?
+  pais_origen Int?
+  codigo_acuerdo Int?
+  forma_pago_importacion Int?
+  tipo_importacion Int?
+  pais_compra Int?
+  peso_bruto Decimal?
+  peso_neto Decimal?
+  codigo_embalaje Int?
+  numero_bultos Int?
+  subpartidas String?
+  unidad_fisica Int?
+  cantidad Decimal?
+  descripcion_mercancia String?
+  @@index([forma_pago_importacion, pais_origen, unidad_fisica, codigo_embalaje, formulario_id])
+}
+
