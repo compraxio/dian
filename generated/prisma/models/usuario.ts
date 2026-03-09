@@ -234,6 +234,7 @@ export type usuarioWhereInput = {
   ultima_sesion?: Prisma.DateTimeNullableFilter<"usuario"> | Date | string | null
   documentos?: Prisma.DocumentoListRelationFilter
   formularios_500?: Prisma.Formulario_500ListRelationFilter
+  sesiones?: Prisma.SessionListRelationFilter
 }
 
 export type usuarioOrderByWithRelationInput = {
@@ -246,6 +247,7 @@ export type usuarioOrderByWithRelationInput = {
   ultima_sesion?: Prisma.SortOrderInput | Prisma.SortOrder
   documentos?: Prisma.documentoOrderByRelationAggregateInput
   formularios_500?: Prisma.formulario_500OrderByRelationAggregateInput
+  sesiones?: Prisma.SessionOrderByRelationAggregateInput
 }
 
 export type usuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -261,6 +263,7 @@ export type usuarioWhereUniqueInput = Prisma.AtLeast<{
   ultima_sesion?: Prisma.DateTimeNullableFilter<"usuario"> | Date | string | null
   documentos?: Prisma.DocumentoListRelationFilter
   formularios_500?: Prisma.Formulario_500ListRelationFilter
+  sesiones?: Prisma.SessionListRelationFilter
 }, "id" | "correo">
 
 export type usuarioOrderByWithAggregationInput = {
@@ -300,6 +303,7 @@ export type usuarioCreateInput = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioUncheckedCreateInput = {
@@ -312,6 +316,7 @@ export type usuarioUncheckedCreateInput = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioUpdateInput = {
@@ -323,6 +328,7 @@ export type usuarioUpdateInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioUncheckedUpdateInput = {
@@ -335,6 +341,7 @@ export type usuarioUncheckedUpdateInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioCreateManyInput = {
@@ -433,6 +440,20 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type usuarioCreateNestedOneWithoutSesionesInput = {
+  create?: Prisma.XOR<Prisma.usuarioCreateWithoutSesionesInput, Prisma.usuarioUncheckedCreateWithoutSesionesInput>
+  connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutSesionesInput
+  connect?: Prisma.usuarioWhereUniqueInput
+}
+
+export type usuarioUpdateOneRequiredWithoutSesionesNestedInput = {
+  create?: Prisma.XOR<Prisma.usuarioCreateWithoutSesionesInput, Prisma.usuarioUncheckedCreateWithoutSesionesInput>
+  connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutSesionesInput
+  upsert?: Prisma.usuarioUpsertWithoutSesionesInput
+  connect?: Prisma.usuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.usuarioUpdateToOneWithWhereWithoutSesionesInput, Prisma.usuarioUpdateWithoutSesionesInput>, Prisma.usuarioUncheckedUpdateWithoutSesionesInput>
+}
+
 export type usuarioCreateNestedOneWithoutDocumentosInput = {
   create?: Prisma.XOR<Prisma.usuarioCreateWithoutDocumentosInput, Prisma.usuarioUncheckedCreateWithoutDocumentosInput>
   connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutDocumentosInput
@@ -461,6 +482,68 @@ export type usuarioUpdateOneRequiredWithoutFormularios_500NestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.usuarioUpdateToOneWithWhereWithoutFormularios_500Input, Prisma.usuarioUpdateWithoutFormularios_500Input>, Prisma.usuarioUncheckedUpdateWithoutFormularios_500Input>
 }
 
+export type usuarioCreateWithoutSesionesInput = {
+  nombre_usuario: string
+  correo: string
+  contrasena: string
+  rol?: $Enums.roles
+  fecha_de_creacion?: Date | string
+  ultima_sesion?: Date | string | null
+  documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
+  formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
+}
+
+export type usuarioUncheckedCreateWithoutSesionesInput = {
+  id?: number
+  nombre_usuario: string
+  correo: string
+  contrasena: string
+  rol?: $Enums.roles
+  fecha_de_creacion?: Date | string
+  ultima_sesion?: Date | string | null
+  documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
+  formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
+}
+
+export type usuarioCreateOrConnectWithoutSesionesInput = {
+  where: Prisma.usuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.usuarioCreateWithoutSesionesInput, Prisma.usuarioUncheckedCreateWithoutSesionesInput>
+}
+
+export type usuarioUpsertWithoutSesionesInput = {
+  update: Prisma.XOR<Prisma.usuarioUpdateWithoutSesionesInput, Prisma.usuarioUncheckedUpdateWithoutSesionesInput>
+  create: Prisma.XOR<Prisma.usuarioCreateWithoutSesionesInput, Prisma.usuarioUncheckedCreateWithoutSesionesInput>
+  where?: Prisma.usuarioWhereInput
+}
+
+export type usuarioUpdateToOneWithWhereWithoutSesionesInput = {
+  where?: Prisma.usuarioWhereInput
+  data: Prisma.XOR<Prisma.usuarioUpdateWithoutSesionesInput, Prisma.usuarioUncheckedUpdateWithoutSesionesInput>
+}
+
+export type usuarioUpdateWithoutSesionesInput = {
+  nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
+  fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
+  formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
+}
+
+export type usuarioUncheckedUpdateWithoutSesionesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
+  fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
+  formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
+}
+
 export type usuarioCreateWithoutDocumentosInput = {
   nombre_usuario: string
   correo: string
@@ -469,6 +552,7 @@ export type usuarioCreateWithoutDocumentosInput = {
   fecha_de_creacion?: Date | string
   ultima_sesion?: Date | string | null
   formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioUncheckedCreateWithoutDocumentosInput = {
@@ -480,6 +564,7 @@ export type usuarioUncheckedCreateWithoutDocumentosInput = {
   fecha_de_creacion?: Date | string
   ultima_sesion?: Date | string | null
   formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioCreateOrConnectWithoutDocumentosInput = {
@@ -506,6 +591,7 @@ export type usuarioUpdateWithoutDocumentosInput = {
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioUncheckedUpdateWithoutDocumentosInput = {
@@ -517,6 +603,7 @@ export type usuarioUncheckedUpdateWithoutDocumentosInput = {
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioCreateWithoutFormularios_500Input = {
@@ -527,6 +614,7 @@ export type usuarioCreateWithoutFormularios_500Input = {
   fecha_de_creacion?: Date | string
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioUncheckedCreateWithoutFormularios_500Input = {
@@ -538,6 +626,7 @@ export type usuarioUncheckedCreateWithoutFormularios_500Input = {
   fecha_de_creacion?: Date | string
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
 }
 
 export type usuarioCreateOrConnectWithoutFormularios_500Input = {
@@ -564,6 +653,7 @@ export type usuarioUpdateWithoutFormularios_500Input = {
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
@@ -575,6 +665,7 @@ export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
 }
 
 
@@ -585,11 +676,13 @@ export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
 export type UsuarioCountOutputType = {
   documentos: number
   formularios_500: number
+  sesiones: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentos?: boolean | UsuarioCountOutputTypeCountDocumentosArgs
   formularios_500?: boolean | UsuarioCountOutputTypeCountFormularios_500Args
+  sesiones?: boolean | UsuarioCountOutputTypeCountSesionesArgs
 }
 
 /**
@@ -616,6 +709,13 @@ export type UsuarioCountOutputTypeCountFormularios_500Args<ExtArgs extends runti
   where?: Prisma.formulario_500WhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountSesionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionWhereInput
+}
+
 
 export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -627,6 +727,7 @@ export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   ultima_sesion?: boolean
   documentos?: boolean | Prisma.usuario$documentosArgs<ExtArgs>
   formularios_500?: boolean | Prisma.usuario$formularios_500Args<ExtArgs>
+  sesiones?: boolean | Prisma.usuario$sesionesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -664,6 +765,7 @@ export type usuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type usuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentos?: boolean | Prisma.usuario$documentosArgs<ExtArgs>
   formularios_500?: boolean | Prisma.usuario$formularios_500Args<ExtArgs>
+  sesiones?: boolean | Prisma.usuario$sesionesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type usuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -674,6 +776,7 @@ export type $usuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     documentos: Prisma.$documentoPayload<ExtArgs>[]
     formularios_500: Prisma.$formulario_500Payload<ExtArgs>[]
+    sesiones: Prisma.$SessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1079,6 +1182,7 @@ export interface Prisma__usuarioClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   documentos<T extends Prisma.usuario$documentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$documentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   formularios_500<T extends Prisma.usuario$formularios_500Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$formularios_500Args<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$formulario_500Payload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sesiones<T extends Prisma.usuario$sesionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$sesionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1548,6 +1652,30 @@ export type usuario$formularios_500Args<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.Formulario_500ScalarFieldEnum | Prisma.Formulario_500ScalarFieldEnum[]
+}
+
+/**
+ * usuario.sesiones
+ */
+export type usuario$sesionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Session
+   */
+  select?: Prisma.SessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Session
+   */
+  omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  where?: Prisma.SessionWhereInput
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[]
+  cursor?: Prisma.SessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
 }
 
 /**

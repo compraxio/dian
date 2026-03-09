@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   usuario: 'usuario',
+  Session: 'Session',
   documento: 'documento',
   formulario_500: 'formulario_500',
   formulario_500_items: 'formulario_500_items'
@@ -84,6 +85,15 @@ export const UsuarioScalarFieldEnum = {
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  usuario_id: 'usuario_id',
+  expiresAt: 'expiresAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const DocumentoScalarFieldEnum = {

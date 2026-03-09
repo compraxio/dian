@@ -47,6 +47,11 @@ export { Prisma }
  */
 export type usuario = Prisma.usuarioModel
 /**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
  * Model documento
  * 
  */

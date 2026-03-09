@@ -27,7 +27,7 @@ export default async function Home() {
             <div className="flex flex-col gap-4">
               <h1 className="text-slate-900 dark:text-slate-100 text-4xl md:text-6xl font-black leading-[1.1] tracking-tight">
                 Simulador DIAN: Domina tus trámites
-                <span className="text-primary">sin riesgos</span>
+                <span className="text-primary"> sin riesgos</span>
               </h1>
               <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
                 Practica el diligenciamiento de formularios tributarios en un entorno seguro y

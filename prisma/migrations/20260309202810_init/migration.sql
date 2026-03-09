@@ -1,9 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `usuarios` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- CreateEnum
 CREATE TYPE "roles" AS ENUM ('ADMIN', 'APRENDIZ');
 
@@ -12,9 +6,6 @@ CREATE TYPE "estados" AS ENUM ('BORRADOR', 'EN_PROGRESO', 'TERMINADO');
 
 -- CreateEnum
 CREATE TYPE "tipo_formulario" AS ENUM ('FORM500', 'FORM510');
-
--- DropTable
-DROP TABLE "usuarios";
 
 -- CreateTable
 CREATE TABLE "usuario" (
@@ -30,29 +21,12 @@ CREATE TABLE "usuario" (
 );
 
 -- CreateTable
-CREATE TABLE "pais" (
-    "id" SERIAL NOT NULL,
-    "nombre" TEXT NOT NULL,
+CREATE TABLE "Session" (
+    "id" TEXT NOT NULL,
+    "usuario_id" INTEGER NOT NULL,
+    "expiresAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "pais_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "departamento" (
-    "id" SERIAL NOT NULL,
-    "pais_id" INTEGER,
-    "nombre" TEXT NOT NULL,
-
-    CONSTRAINT "departamento_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "ciudad" (
-    "id" SERIAL NOT NULL,
-    "departamento_id" INTEGER,
-    "nombre" TEXT NOT NULL,
-
-    CONSTRAINT "ciudad_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Session_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -84,9 +58,9 @@ CREATE TABLE "formulario_500" (
     "tipo_declaracion" INTEGER,
     "codigo" INTEGER,
     "numero_formulario_anterior" INTEGER,
-    "anio_declaracion_exportacion" TEXT,
+    "anio_declaracion_exportacion" INTEGER,
     "declaracion_exportacion" INTEGER,
-    "anio_declaracion" TEXT,
+    "anio_declaracion" INTEGER,
     "codigo_direccion_seccional" INTEGER,
     "codigo_direccion_seccional_exportacion" INTEGER,
     "nit_importador" TEXT,
@@ -121,24 +95,24 @@ CREATE TABLE "formulario_500" (
     "bandera_transporte" INTEGER,
     "destino_mercancia" INTEGER,
     "empresa_transportadora" TEXT,
-    "tasa_cambio" DOUBLE PRECISION,
-    "valor_fob" DOUBLE PRECISION,
-    "valor_fletes" DOUBLE PRECISION,
-    "valor_seguros" DOUBLE PRECISION,
-    "valor_otros_gastos" DOUBLE PRECISION,
-    "suma_gastos" DOUBLE PRECISION,
-    "ajuste_valor" DOUBLE PRECISION,
-    "valor_aduana" DOUBLE PRECISION,
-    "base_gravable" DOUBLE PRECISION,
-    "porcentaje_arancel" DOUBLE PRECISION,
-    "valor_arancel" DOUBLE PRECISION,
-    "porcentaje_iva" DOUBLE PRECISION,
-    "valor_iva" DOUBLE PRECISION,
-    "total_liquidado" DOUBLE PRECISION,
-    "valor_pagos_anteriores" DOUBLE PRECISION,
+    "tasa_cambio" DECIMAL(65,30),
+    "valor_fob" DECIMAL(65,30),
+    "valor_fletes" DECIMAL(65,30),
+    "valor_seguros" DECIMAL(65,30),
+    "valor_otros_gastos" DECIMAL(65,30),
+    "suma_gastos" DECIMAL(65,30),
+    "ajuste_valor" DECIMAL(65,30),
+    "valor_aduana" DECIMAL(65,30),
+    "base_gravable" DECIMAL(65,30),
+    "porcentaje_arancel" DECIMAL(65,30),
+    "valor_arancel" DECIMAL(65,30),
+    "porcentaje_iva" DECIMAL(65,30),
+    "valor_iva" DECIMAL(65,30),
+    "total_liquidado" DECIMAL(65,30),
+    "valor_pagos_anteriores" DECIMAL(65,30),
     "recibo_pago_anterior" TEXT,
     "fecha_pago_anterior" TIMESTAMP(3),
-    "pago_total" DOUBLE PRECISION,
+    "pago_total" DECIMAL(65,30),
     "adhesivo_banco" TEXT,
     "sello_banco" TEXT,
     "actuacion_aduanera" TEXT,
@@ -162,20 +136,20 @@ CREATE TABLE "formulario_500_items" (
     "codigo_suplementario" TEXT,
     "modalidad" INTEGER,
     "numero_cuotas" INTEGER,
-    "valor_cuota_usd" DOUBLE PRECISION,
+    "valor_cuota_usd" DECIMAL(65,30),
     "periodicidad_pago" TEXT,
     "pais_origen" INTEGER,
     "codigo_acuerdo" INTEGER,
     "forma_pago_importacion" INTEGER,
     "tipo_importacion" INTEGER,
     "pais_compra" INTEGER,
-    "peso_bruto" DOUBLE PRECISION,
-    "peso_neto" DOUBLE PRECISION,
+    "peso_bruto" DECIMAL(65,30),
+    "peso_neto" DECIMAL(65,30),
     "codigo_embalaje" INTEGER,
     "numero_bultos" INTEGER,
     "subpartidas" TEXT,
     "unidad_fisica" INTEGER,
-    "cantidad" DOUBLE PRECISION,
+    "cantidad" DECIMAL(65,30),
     "descripcion_mercancia" TEXT,
 
     CONSTRAINT "formulario_500_items_pkey" PRIMARY KEY ("id")
@@ -188,31 +162,22 @@ CREATE UNIQUE INDEX "usuario_correo_key" ON "usuario"("correo");
 CREATE INDEX "usuario_rol_idx" ON "usuario"("rol");
 
 -- CreateIndex
-CREATE INDEX "departamento_pais_id_idx" ON "departamento"("pais_id");
-
--- CreateIndex
 CREATE INDEX "documento_usuario_id_formulario_id_tipo_documento_fecha_sub_idx" ON "documento"("usuario_id", "formulario_id", "tipo_documento", "fecha_subida");
 
 -- CreateIndex
-CREATE INDEX "formulario_500_usuario_id_estado_tipo_formulario_fecha_de_c_idx" ON "formulario_500"("usuario_id", "estado", "tipo_formulario", "fecha_de_creacion");
-
--- CreateIndex
-CREATE INDEX "formulario_500_items_formulario_id_idx" ON "formulario_500_items"("formulario_id");
+CREATE INDEX "formulario_500_items_forma_pago_importacion_pais_origen_uni_idx" ON "formulario_500_items"("forma_pago_importacion", "pais_origen", "unidad_fisica", "codigo_embalaje", "formulario_id");
 
 -- AddForeignKey
-ALTER TABLE "departamento" ADD CONSTRAINT "departamento_pais_id_fkey" FOREIGN KEY ("pais_id") REFERENCES "pais"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ciudad" ADD CONSTRAINT "ciudad_departamento_id_fkey" FOREIGN KEY ("departamento_id") REFERENCES "departamento"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "documento" ADD CONSTRAINT "documento_usuario_id_fkey" FOREIGN KEY ("usuario_id") REFERENCES "usuario"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Session" ADD CONSTRAINT "Session_usuario_id_fkey" FOREIGN KEY ("usuario_id") REFERENCES "usuario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "documento" ADD CONSTRAINT "documento_formulario_id_fkey" FOREIGN KEY ("formulario_id") REFERENCES "formulario_500"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "documento" ADD CONSTRAINT "documento_usuario_id_fkey" FOREIGN KEY ("usuario_id") REFERENCES "usuario"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "formulario_500" ADD CONSTRAINT "formulario_500_usuario_id_fkey" FOREIGN KEY ("usuario_id") REFERENCES "usuario"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "formulario_500_items" ADD CONSTRAINT "formulario_500_items_formulario_id_fkey" FOREIGN KEY ("formulario_id") REFERENCES "formulario_500"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "formulario_500_items" ADD CONSTRAINT "formulario_500_items_formulario_id_fkey" FOREIGN KEY ("formulario_id") REFERENCES "formulario_500"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
