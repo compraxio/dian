@@ -130,7 +130,7 @@ export default function IniciarSession() {
                 className="w-full bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/20 hover:bg-orange-600 transition-all flex items-center justify-center gap-2 mt-2"
                 type="submit"
               >
-                <span>Iniciar Sesión</span>
+                <Link href="/dashboard">Iniciar Sesión</Link>
                 <IoLogIn size={25} />
               </button>
             </form>

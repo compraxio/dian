@@ -28,7 +28,7 @@ export default function Registro() {
   const onSumbit: SubmitHandler<InputRegistro> = (data) => {
     console.log(data);
   };
-  
+
   return (
     <>
       <main className="flex flex-1 items-center justify-center px-4 py-12">
@@ -64,7 +64,7 @@ export default function Registro() {
               </div>
               {errors.nombre && (
                 <div className="flex items-center gap-1.5 text-sm text-red-500 dark:text-red-400 animate-in fade-in slide-in-from-top-1">
-                  <MdErrorOutline size={16} className="flex-shrink-0" />
+                  <MdErrorOutline size={16} className="shrink-0" />
                   <span>{errors.nombre.message}</span>
                 </div>
               )}
@@ -90,7 +90,7 @@ export default function Registro() {
               </div>
               {errors.correo && (
                 <div className="flex items-center gap-1.5 text-sm text-red-500 dark:text-red-400 animate-in fade-in slide-in-from-top-1">
-                  <MdErrorOutline size={16} className="flex-shrink-0" />
+                  <MdErrorOutline size={16} className="shrink-0" />
                   <span>{errors.correo.message}</span>
                 </div>
               )}
@@ -125,7 +125,7 @@ export default function Registro() {
               </div>
               {errors.contraseña1 && (
                 <div className="flex items-center gap-1.5 text-sm text-red-500 dark:text-red-400 animate-in fade-in slide-in-from-top-1">
-                  <MdErrorOutline size={16} className="flex-shrink-0" />
+                  <MdErrorOutline size={16} className="shrink-0" />
                   <span>{errors.contraseña1.message}</span>
                 </div>
               )}
@@ -151,17 +151,18 @@ export default function Registro() {
               </div>
               {errors.contraseña2 && (
                 <div className="flex items-center gap-1.5 text-sm text-red-500 dark:text-red-400 animate-in fade-in slide-in-from-top-1">
-                  <MdErrorOutline size={16} className="flex-shrink-0" />
+                  <MdErrorOutline size={16} className="shrink-0" />
                   <span>{errors.contraseña2.message}</span>
                 </div>
               )}
             </div>
-            <button
+            <Link
               className="w-full rounded-xl bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 hover:scale-[1.01] active:scale-[0.99] focus:ring-4 focus:ring-primary/20"
-              type="submit"
+              // type="submit"
+              href='/dashboard'
             >
               Crear Cuenta
-            </button>
+            </Link>
             <button
               className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md active:scale-[0.99] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
               type="button"
