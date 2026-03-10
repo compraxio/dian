@@ -5,10 +5,13 @@ import { IoLogIn, IoMail } from 'react-icons/io5';
 import { MdVisibility, MdVisibilityOff, MdErrorOutline } from 'react-icons/md';
 import { useState } from 'react';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
+
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ingresarSchema, InputIngresar } from '@/schemas/ingresarSchema';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function IniciarSession() {
   const [vercontrasena, setVercontrasena] = useState<boolean>(false);
@@ -130,9 +133,17 @@ export default function IniciarSession() {
                 className="w-full bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/20 hover:bg-orange-600 transition-all flex items-center justify-center gap-2 mt-2"
                 type="submit"
               >
-                <Link href="/dashboard">Iniciar Sesión</Link>
+                <span>Iniciar Sesión</span>
                 <IoLogIn size={25} />
               </button>
+              <button
+                            className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md active:scale-[0.99] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
+                            type="button"
+                            onClick={() => signIn('google', { callbackUrl: '/' })}
+                          >
+                            <FcGoogle size={22} />
+                            Continuar con Google
+                          </button>
             </form>
 
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800 text-center">

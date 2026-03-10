@@ -156,13 +156,12 @@ export default function Registro() {
                 </div>
               )}
             </div>
-            <Link
+            <button
               className="w-full rounded-xl bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 hover:scale-[1.01] active:scale-[0.99] focus:ring-4 focus:ring-primary/20"
-              // type="submit"
-              href='/dashboard'
+              type="submit"
             >
               Crear Cuenta
-            </Link>
+            </button>
             <button
               className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md active:scale-[0.99] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
               type="button"
