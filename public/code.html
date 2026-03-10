@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
-<html lang="es">
+<html class="light" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DIAN Formulario 500 - Sección 8</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -37,265 +37,247 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
 
-<body class="bg-light dark:bg-dark text-slate-900 dark:text-slate-100 font-display">
-    <div class="flex h-screen overflow-hidden">
-        <!-- SideNavBar -->
-        <aside
-            class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-y-auto">
-            <div class="flex flex-col h-full p-4">
-                <div class="flex items-center gap-3 mb-8 px-2">
-                    <div class="bg-primary size-10 rounded-full flex items-center justify-center text-white">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Simulador DIAN</h1>
-                        <p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Panel de Control</p>
-                    </div>
+<body class="bg-light dark:bg-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+    <div class="layout-container flex h-full grow flex-col">
+        <!-- Top Navigation Bar -->
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+            <div class="flex items-center gap-4 text-slate-900 dark:text-white">
+                <div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+                    <span class="material-symbols-outlined">description</span>
                 </div>
-                <nav class="flex flex-col gap-1">
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined">home</span>
-                        <span class="text-sm font-medium">Inicio</span>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
-                        <span class="material-symbols-outlined !fill-1">description</span>
-                        <span class="text-sm font-bold">Formularios</span>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined">history</span>
-                        <span class="text-sm font-medium">Historial</span>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                        href="#">
-                        <span class="material-symbols-outlined">bar_chart</span>
-                        <span class="text-sm font-medium">Reportes</span>
-                    </a>
-                    <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
-                        <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                            href="#">
-                            <span class="material-symbols-outlined">settings</span>
-                            <span class="text-sm font-medium">Configuración</span>
-                        </a>
-                    </div>
-                </nav>
+                <h2 class="text-lg font-bold leading-tight tracking-tight">DIAN Formulario 500</h2>
             </div>
-        </aside>
-        <!-- Main Content -->
-        <main class="flex-1 flex flex-col overflow-hidden">
-            <!-- Header -->
-            <header
-                class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-8 flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <span class="material-symbols-outlined text-primary">auto_awesome</span>
-                    <h2 class="text-lg font-bold tracking-tight">Simulador de Formularios</h2>
+            <div class="flex flex-1 justify-end gap-4 items-center">
+                <button
+                    class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <div
+                    class="bg-slate-200 dark:bg-slate-700 rounded-full size-10 flex items-center justify-center overflow-hidden border-2 border-primary/20">
+                    <img alt="Avatar del usuario" class="w-full h-full object-cover"
+                        data-alt="User profile picture professional male"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIe8Nur7MCcbB71Q-hOhh66M5nSHq6o5T-hlNZunxFIoXve_emCBxTWGCRy7tmx11z7UwNiezojSyAC5sVAU5ixyf8abovhR5grciEN3iAxO83sVXQ-RXMghq8uffNfVAIHBiUEirzNnuWnD3NA-Ma7W5k3HOzZGRvcYnTYmmCIIk5ASgpqjmNOSxTihTJPMyNmuE9u-2rqHmVGyI5teLNNl8sjRxO8FwVL41CTuugIFastxnE_3g6uqZJuLXohRE1CT95yCU0MPQ" />
                 </div>
-                <div class="flex items-center gap-6">
-                    <div class="relative hidden md:block">
-                        <span
-                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
-                        <input
-                            class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/50"
-                            placeholder="Buscar formulario..." type="text" />
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                            <span class="material-symbols-outlined">notifications</span>
-                        </button>
-                        <button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
-                            <span class="material-symbols-outlined">account_circle</span>
-                        </button>
-                    </div>
+            </div>
+        </header>
+        <main class="flex-1 max-w-5xl mx-auto w-full p-4 md:p-8">
+            <!-- Progress Section -->
+
+            <!-- Section Title -->
+            <div class="mb-8">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-primary text-3xl">calculate</span>
+                    <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">SECCIÓN 8 —
+                        Autoliquidación</h1>
                 </div>
-            </header>
-            <!-- Scrollable Content -->
-            <div class="flex-1 overflow-y-auto p-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="mb-8">
-                        <h1 class="text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Formularios
-                            Disponibles</h1>
-                        <p class="text-slate-500 dark:text-slate-400 max-w-2xl text-lg">Seleccione un formulario para
-                            comenzar su práctica de simulación tributaria. Todos los cálculos se actualizan en tiempo
-                            real.</p>
-                    </div>
-                    <!-- Category Tabs -->
-                    <div class="flex border-b border-slate-200 dark:border-slate-800 mb-8 gap-8">
-                        <button class="pb-4 border-b-2 border-primary text-primary font-bold text-sm">Todos</button>
-                        <button
-                            class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium text-sm">Renta</button>
-                        <button
-                            class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium text-sm">IVA</button>
-                        <button
-                            class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium text-sm">Aduanas</button>
-                        <button
-                            class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium text-sm">Retenciones</button>
-                    </div>
-                    <!-- Featured Section (Formulario 500) -->
-                    <div class="mb-12">
-                        <div
-                            class="relative group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row">
-                            <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
-                                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    data-alt="Oficina moderna con documentos financieros y calculadoras"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjLcWpneCijYrSXULBVG7534TEi0Wm5LtvWKXn-DLeh13AJdwpFz0FpiUCXCBBFM4Gw60Amk1ojwrPZLY3N8P8zbt9zmfWKufd1XgI-1LlKh-c981N-Cvhr-8hUuthT-YGoxoKD50CGgYmjLRhWI0xOi4XELUqA53mGUnXjugVL4pXaMU4BtaC2YAVVZTjuJs92TqqfWGle95YK1mzEU5o00C00RsxKYCdzCsacfI3hlQGmjMXx6xrgpUlSMFO2j0JmBkjYzavnKg" />
-                                <div
-                                    class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest uppercase">
-                                    Destacado</div>
-                            </div>
-                            <div class="flex-1 p-8 flex flex-col justify-center">
-                                <div class="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h3 class="text-sm font-bold text-primary mb-1 uppercase tracking-wider">
-                                            Formulario 500</h3>
-                                        <h2 class="text-2xl font-black text-slate-900 dark:text-white">Declaración de
-                                            Importación</h2>
+                <p class="text-slate-500 dark:text-slate-400">Liquidación de tributos aduaneros y sanciones
+                    correspondientes (Casillas 92-126).</p>
+            </div>
+            <!-- Table Container -->
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden mb-8">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr
+                                class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                                <th class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300">Concepto
+                                </th>
+                                <th
+                                    class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300 text-right">
+                                    Base Gravable</th>
+                                <th
+                                    class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300 text-right w-32">
+                                    % Arancel</th>
+                                <th
+                                    class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300 text-right w-32">
+                                    % IVA</th>
+                                <th
+                                    class="px-6 py-4 text-sm font-semibold text-slate-700 dark:text-slate-300 text-right">
+                                    Valor Liquidado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <!-- Arancel Row -->
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Arancel
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="1000000" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="10" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:text-slate-500 cursor-not-allowed"
+                                        disabled="" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 border border-transparent">
+                                        $ 100.000
                                     </div>
-                                    <span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
-                                </div>
-                                <p class="text-slate-600 dark:text-slate-400 mb-6 text-lg leading-relaxed">Utilizado
-                                    para declarar legalmente la importación de mercancías al territorio aduanero
-                                    nacional. Incluye cálculo de aranceles e IVA.</p>
-                                <div class="flex items-center gap-4">
-                                    <button
-                                        class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
-                                        Practicar Ahora
-                                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                                    </button>
-                                    <span class="text-xs text-slate-400 font-medium flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-xs">update</span>
-                                        Actualizado: Oct 2023
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                                </td>
+                            </tr>
+                            <!-- IVA Row -->
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">IVA</td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="1100000" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:text-slate-500 cursor-not-allowed"
+                                        disabled="" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="19" />
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 border border-transparent">
+                                        $ 209.000
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Salvaguardias Row -->
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">
+                                    Salvaguardias</td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:text-slate-500 cursor-not-allowed"
+                                        disabled="" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 border border-transparent">
+                                        $ 0
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Sanciones Row -->
+                            <tr>
+                                <td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-slate-100">Sanciones
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-transparent border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary text-sm dark:text-white"
+                                        placeholder="0" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:text-slate-500 cursor-not-allowed"
+                                        disabled="" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-right bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:text-slate-500 cursor-not-allowed"
+                                        disabled="" type="number" value="0" />
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 border border-transparent">
+                                        $ 0
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Totals Row -->
+                            <tr
+                                class="bg-slate-50 dark:bg-slate-800/80 border-t-2 border-slate-200 dark:border-slate-700">
+                                <td class="px-6 py-5 text-base font-bold text-slate-900 dark:text-white">TOTALES</td>
+                                <td class="px-6 py-5"></td>
+                                <td class="px-6 py-5"></td>
+                                <td class="px-6 py-5"></td>
+                                <td class="px-6 py-5 text-right">
+                                    <span class="text-lg font-bold text-primary">$ 309.000</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Total General Card -->
+            <div
+                class="bg-gradient-to-r from-primary to-[#ff8533] rounded-xl p-6 shadow-lg shadow-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+                <div class="flex items-center gap-5">
+                    <div class="p-3 bg-white/20 rounded-full text-white">
+                        <span class="material-symbols-outlined text-4xl">payments</span>
                     </div>
-                    <!-- Grid of Forms -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Form Card 110 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
-                                    <span class="material-symbols-outlined">business</span>
-                                </div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Personas
-                                    Jurídicas</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-primary mb-1">Formulario 110</h3>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Renta y Complementarios
-                            </h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">Declaración de renta
-                                para personas jurídicas y asimiladas, y naturales no residentes.</p>
-                            <button
-                                class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-all text-sm">
-                                Practicar
-                            </button>
-                        </div>
-                        <!-- Form Card 210 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg text-green-600 dark:text-green-400">
-                                    <span class="material-symbols-outlined">person</span>
-                                </div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Personas
-                                    Naturales</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-primary mb-1">Formulario 210</h3>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Renta Personas Naturales
-                            </h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">Para personas
-                                naturales y sucesiones ilíquidas residentes con sistema cedular.</p>
-                            <button
-                                class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-all text-sm">
-                                Practicar
-                            </button>
-                        </div>
-                        <!-- Form Card 300 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-purple-600 dark:text-purple-400">
-                                    <span class="material-symbols-outlined">receipt_long</span>
-                                </div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Impuestos
-                                    Venta</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-primary mb-1">Formulario 300</h3>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Declaración del IVA</h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">Declaración
-                                bimestral o cuatrimestral del impuesto sobre las ventas.</p>
-                            <button
-                                class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-all text-sm">
-                                Practicar
-                            </button>
-                        </div>
-                        <!-- Form Card 350 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg text-amber-600 dark:text-amber-400">
-                                    <span class="material-symbols-outlined">payments</span>
-                                </div>
-                                <span
-                                    class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Retenciones</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-primary mb-1">Formulario 350</h3>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Retención en la Fuente
-                            </h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">Declaración mensual
-                                de retenciones en la fuente de renta, IVA y timbre.</p>
-                            <button
-                                class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-all text-sm">
-                                Practicar
-                            </button>
-                        </div>
-                        <!-- Form Card 420 -->
-                        <div
-                            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="p-2 bg-pink-50 dark:bg-pink-900/20 rounded-lg text-pink-600 dark:text-pink-400">
-                                    <span class="material-symbols-outlined">inventory</span>
-                                </div>
-                                <span
-                                    class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Especiales</span>
-                            </div>
-                            <h3 class="text-xs font-bold text-primary mb-1">Formulario 420</h3>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Impuesto al Carbono</h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">Declaración y pago
-                                del impuesto nacional al carbono para responsables.</p>
-                            <button
-                                class="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-700 dark:text-slate-300 font-bold rounded-lg transition-all text-sm">
-                                Practicar
-                            </button>
-                        </div>
-                        <!-- Scalable empty state slot -->
-                        <div
-                            class="border-2 border-dashed border-slate-200 dark:border-slate-800 p-6 rounded-xl flex flex-col items-center justify-center text-center opacity-60">
-                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">add_circle</span>
-                            <h4 class="text-sm font-bold text-slate-400">Más formularios pronto</h4>
-                            <p class="text-xs text-slate-400">Estamos trabajando en nuevos simuladores.</p>
-                        </div>
+                    <div>
+                        <p class="text-white/80 text-sm font-medium uppercase tracking-wide">Casilla 126</p>
+                        <h3 class="text-white text-2xl font-bold">Total General a Pagar</h3>
                     </div>
+                </div>
+                <div
+                    class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-8 py-4 text-center md:text-right">
+                    <p class="text-white/70 text-xs font-bold uppercase mb-1">Valor en Pesos Colombianos</p>
+                    <p class="text-white text-4xl font-black">$ 309.000</p>
+                </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <div class="flex items-center justify-between pt-8 border-t border-slate-200 dark:border-slate-800">
+                <button
+                    class="flex items-center gap-2 px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Anterior
+                </button>
+                <div class="flex gap-4">
+                    <button
+                        class="px-6 py-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                        Guardar Borrador
+                    </button>
+                    <button
+                        class="flex items-center gap-2 px-8 py-2.5 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
+                        Siguiente
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
                 </div>
             </div>
         </main>
+        <!-- Footer -->
+        <footer
+            class="mt-auto py-8 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 md:px-10">
+            <div
+                class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <p>© 2024 DIAN - Dirección de Impuestos y Aduanas Nacionales</p>
+                <div class="flex gap-6">
+                    <a class="hover:text-primary transition-colors" href="#">Términos y Condiciones</a>
+                    <a class="hover:text-primary transition-colors" href="#">Ayuda</a>
+                    <a class="hover:text-primary transition-colors" href="#">Contacto</a>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 

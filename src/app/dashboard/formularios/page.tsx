@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   MdLocalShipping,
   MdArrowForward,
@@ -53,10 +54,13 @@ export default function formularios() {
                 aduanero nacional. Incluye cálculo de aranceles e IVA.
               </p>
               <div className="flex items-center gap-4">
-                <button className="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2 shadow-lg shadow-primary/20">
+                <Link
+                  href="/dashboard/formularios/formulario500"
+                  className="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center gap-2 shadow-lg shadow-primary/20"
+                >
                   Practicar Ahora
                   <MdArrowForward className="text-sm" />
-                </button>
+                </Link>
                 <span className="text-xs text-slate-400 font-medium flex items-center gap-1">
                   <MdUpdate className="text-xs" />
                   Actualizado: Oct 2023
