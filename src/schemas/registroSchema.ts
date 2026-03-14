@@ -8,7 +8,7 @@ export const registroSchema = z
       .max(25, { message: 'Nombre muy largo' }),
     correo: z.email({ message: 'Correo invalido' }),
     contraseña1: z.string().min(2, { message: 'La contraseña es obligatoria' }),
-    contraseña2: z.string().min(2, { message: 'Porfavor confirme la contraseña' }),
+    contraseña2: z.string().min(2, { message: 'Por favor confirme la contraseña' }),
   })
   .refine((data) => data.contraseña1 === data.contraseña2, {
     message: 'Las contraseñas no coinciden',

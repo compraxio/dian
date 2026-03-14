@@ -1846,6 +1846,11 @@ export type formulario_500_itemsFindManyArgs<ExtArgs extends runtime.Types.Exten
    * Skip the first `n` formulario_500_items.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of formulario_500_items.
+   */
   distinct?: Prisma.Formulario_500_itemsScalarFieldEnum | Prisma.Formulario_500_itemsScalarFieldEnum[]
 }
 

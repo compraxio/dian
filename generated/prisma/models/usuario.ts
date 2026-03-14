@@ -37,6 +37,7 @@ export type UsuarioSumAggregateOutputType = {
 export type UsuarioMinAggregateOutputType = {
   id: number | null
   nombre_usuario: string | null
+  avatar: string | null
   correo: string | null
   contrasena: string | null
   rol: $Enums.roles | null
@@ -47,6 +48,7 @@ export type UsuarioMinAggregateOutputType = {
 export type UsuarioMaxAggregateOutputType = {
   id: number | null
   nombre_usuario: string | null
+  avatar: string | null
   correo: string | null
   contrasena: string | null
   rol: $Enums.roles | null
@@ -57,6 +59,7 @@ export type UsuarioMaxAggregateOutputType = {
 export type UsuarioCountAggregateOutputType = {
   id: number
   nombre_usuario: number
+  avatar: number
   correo: number
   contrasena: number
   rol: number
@@ -77,6 +80,7 @@ export type UsuarioSumAggregateInputType = {
 export type UsuarioMinAggregateInputType = {
   id?: true
   nombre_usuario?: true
+  avatar?: true
   correo?: true
   contrasena?: true
   rol?: true
@@ -87,6 +91,7 @@ export type UsuarioMinAggregateInputType = {
 export type UsuarioMaxAggregateInputType = {
   id?: true
   nombre_usuario?: true
+  avatar?: true
   correo?: true
   contrasena?: true
   rol?: true
@@ -97,6 +102,7 @@ export type UsuarioMaxAggregateInputType = {
 export type UsuarioCountAggregateInputType = {
   id?: true
   nombre_usuario?: true
+  avatar?: true
   correo?: true
   contrasena?: true
   rol?: true
@@ -194,6 +200,7 @@ export type usuarioGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type UsuarioGroupByOutputType = {
   id: number
   nombre_usuario: string
+  avatar: string | null
   correo: string
   contrasena: string
   rol: $Enums.roles
@@ -227,6 +234,7 @@ export type usuarioWhereInput = {
   NOT?: Prisma.usuarioWhereInput | Prisma.usuarioWhereInput[]
   id?: Prisma.IntFilter<"usuario"> | number
   nombre_usuario?: Prisma.StringFilter<"usuario"> | string
+  avatar?: Prisma.StringNullableFilter<"usuario"> | string | null
   correo?: Prisma.StringFilter<"usuario"> | string
   contrasena?: Prisma.StringFilter<"usuario"> | string
   rol?: Prisma.EnumrolesFilter<"usuario"> | $Enums.roles
@@ -240,6 +248,7 @@ export type usuarioWhereInput = {
 export type usuarioOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombre_usuario?: Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   correo?: Prisma.SortOrder
   contrasena?: Prisma.SortOrder
   rol?: Prisma.SortOrder
@@ -257,6 +266,7 @@ export type usuarioWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.usuarioWhereInput[]
   NOT?: Prisma.usuarioWhereInput | Prisma.usuarioWhereInput[]
   nombre_usuario?: Prisma.StringFilter<"usuario"> | string
+  avatar?: Prisma.StringNullableFilter<"usuario"> | string | null
   contrasena?: Prisma.StringFilter<"usuario"> | string
   rol?: Prisma.EnumrolesFilter<"usuario"> | $Enums.roles
   fecha_de_creacion?: Prisma.DateTimeFilter<"usuario"> | Date | string
@@ -269,6 +279,7 @@ export type usuarioWhereUniqueInput = Prisma.AtLeast<{
 export type usuarioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombre_usuario?: Prisma.SortOrder
+  avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   correo?: Prisma.SortOrder
   contrasena?: Prisma.SortOrder
   rol?: Prisma.SortOrder
@@ -287,6 +298,7 @@ export type usuarioScalarWhereWithAggregatesInput = {
   NOT?: Prisma.usuarioScalarWhereWithAggregatesInput | Prisma.usuarioScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"usuario"> | number
   nombre_usuario?: Prisma.StringWithAggregatesFilter<"usuario"> | string
+  avatar?: Prisma.StringNullableWithAggregatesFilter<"usuario"> | string | null
   correo?: Prisma.StringWithAggregatesFilter<"usuario"> | string
   contrasena?: Prisma.StringWithAggregatesFilter<"usuario"> | string
   rol?: Prisma.EnumrolesWithAggregatesFilter<"usuario"> | $Enums.roles
@@ -296,6 +308,7 @@ export type usuarioScalarWhereWithAggregatesInput = {
 
 export type usuarioCreateInput = {
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -309,6 +322,7 @@ export type usuarioCreateInput = {
 export type usuarioUncheckedCreateInput = {
   id?: number
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -321,6 +335,7 @@ export type usuarioUncheckedCreateInput = {
 
 export type usuarioUpdateInput = {
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -334,6 +349,7 @@ export type usuarioUpdateInput = {
 export type usuarioUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -347,6 +363,7 @@ export type usuarioUncheckedUpdateInput = {
 export type usuarioCreateManyInput = {
   id?: number
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -356,6 +373,7 @@ export type usuarioCreateManyInput = {
 
 export type usuarioUpdateManyMutationInput = {
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -366,6 +384,7 @@ export type usuarioUpdateManyMutationInput = {
 export type usuarioUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -376,6 +395,7 @@ export type usuarioUncheckedUpdateManyInput = {
 export type usuarioCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre_usuario?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
   correo?: Prisma.SortOrder
   contrasena?: Prisma.SortOrder
   rol?: Prisma.SortOrder
@@ -390,6 +410,7 @@ export type usuarioAvgOrderByAggregateInput = {
 export type usuarioMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre_usuario?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
   correo?: Prisma.SortOrder
   contrasena?: Prisma.SortOrder
   rol?: Prisma.SortOrder
@@ -400,6 +421,7 @@ export type usuarioMaxOrderByAggregateInput = {
 export type usuarioMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre_usuario?: Prisma.SortOrder
+  avatar?: Prisma.SortOrder
   correo?: Prisma.SortOrder
   contrasena?: Prisma.SortOrder
   rol?: Prisma.SortOrder
@@ -418,6 +440,10 @@ export type UsuarioScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type EnumrolesFieldUpdateOperationsInput = {
@@ -484,6 +510,7 @@ export type usuarioUpdateOneRequiredWithoutFormularios_500NestedInput = {
 
 export type usuarioCreateWithoutSesionesInput = {
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -496,6 +523,7 @@ export type usuarioCreateWithoutSesionesInput = {
 export type usuarioUncheckedCreateWithoutSesionesInput = {
   id?: number
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -523,6 +551,7 @@ export type usuarioUpdateToOneWithWhereWithoutSesionesInput = {
 
 export type usuarioUpdateWithoutSesionesInput = {
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -535,6 +564,7 @@ export type usuarioUpdateWithoutSesionesInput = {
 export type usuarioUncheckedUpdateWithoutSesionesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -546,6 +576,7 @@ export type usuarioUncheckedUpdateWithoutSesionesInput = {
 
 export type usuarioCreateWithoutDocumentosInput = {
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -558,6 +589,7 @@ export type usuarioCreateWithoutDocumentosInput = {
 export type usuarioUncheckedCreateWithoutDocumentosInput = {
   id?: number
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -585,6 +617,7 @@ export type usuarioUpdateToOneWithWhereWithoutDocumentosInput = {
 
 export type usuarioUpdateWithoutDocumentosInput = {
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -597,6 +630,7 @@ export type usuarioUpdateWithoutDocumentosInput = {
 export type usuarioUncheckedUpdateWithoutDocumentosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -608,6 +642,7 @@ export type usuarioUncheckedUpdateWithoutDocumentosInput = {
 
 export type usuarioCreateWithoutFormularios_500Input = {
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -620,6 +655,7 @@ export type usuarioCreateWithoutFormularios_500Input = {
 export type usuarioUncheckedCreateWithoutFormularios_500Input = {
   id?: number
   nombre_usuario: string
+  avatar?: string | null
   correo: string
   contrasena: string
   rol?: $Enums.roles
@@ -647,6 +683,7 @@ export type usuarioUpdateToOneWithWhereWithoutFormularios_500Input = {
 
 export type usuarioUpdateWithoutFormularios_500Input = {
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -659,6 +696,7 @@ export type usuarioUpdateWithoutFormularios_500Input = {
 export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
@@ -720,6 +758,7 @@ export type UsuarioCountOutputTypeCountSesionesArgs<ExtArgs extends runtime.Type
 export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre_usuario?: boolean
+  avatar?: boolean
   correo?: boolean
   contrasena?: boolean
   rol?: boolean
@@ -734,6 +773,7 @@ export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type usuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre_usuario?: boolean
+  avatar?: boolean
   correo?: boolean
   contrasena?: boolean
   rol?: boolean
@@ -744,6 +784,7 @@ export type usuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type usuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre_usuario?: boolean
+  avatar?: boolean
   correo?: boolean
   contrasena?: boolean
   rol?: boolean
@@ -754,6 +795,7 @@ export type usuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type usuarioSelectScalar = {
   id?: boolean
   nombre_usuario?: boolean
+  avatar?: boolean
   correo?: boolean
   contrasena?: boolean
   rol?: boolean
@@ -761,7 +803,7 @@ export type usuarioSelectScalar = {
   ultima_sesion?: boolean
 }
 
-export type usuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre_usuario" | "correo" | "contrasena" | "rol" | "fecha_de_creacion" | "ultima_sesion", ExtArgs["result"]["usuario"]>
+export type usuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre_usuario" | "avatar" | "correo" | "contrasena" | "rol" | "fecha_de_creacion" | "ultima_sesion", ExtArgs["result"]["usuario"]>
 export type usuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentos?: boolean | Prisma.usuario$documentosArgs<ExtArgs>
   formularios_500?: boolean | Prisma.usuario$formularios_500Args<ExtArgs>
@@ -781,6 +823,7 @@ export type $usuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nombre_usuario: string
+    avatar: string | null
     correo: string
     contrasena: string
     rol: $Enums.roles
@@ -1214,6 +1257,7 @@ export interface Prisma__usuarioClient<T, Null = never, ExtArgs extends runtime.
 export interface usuarioFieldRefs {
   readonly id: Prisma.FieldRef<"usuario", 'Int'>
   readonly nombre_usuario: Prisma.FieldRef<"usuario", 'String'>
+  readonly avatar: Prisma.FieldRef<"usuario", 'String'>
   readonly correo: Prisma.FieldRef<"usuario", 'String'>
   readonly contrasena: Prisma.FieldRef<"usuario", 'String'>
   readonly rol: Prisma.FieldRef<"usuario", 'roles'>
@@ -1415,6 +1459,11 @@ export type usuarioFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` usuarios.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of usuarios.
+   */
   distinct?: Prisma.UsuarioScalarFieldEnum | Prisma.UsuarioScalarFieldEnum[]
 }
 

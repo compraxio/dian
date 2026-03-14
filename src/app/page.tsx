@@ -14,7 +14,7 @@ import { HiRocketLaunch } from 'react-icons/hi2';
 import { FaShieldAlt } from 'react-icons/fa';
 
 import prisma from '../lib/prisma';
-import { FaBoltLightning, FaHandsHoldingChild, FaLockOpen, FaShare } from 'react-icons/fa6';
+import { FaBoltLightning, FaLockOpen } from 'react-icons/fa6';
 
 export default async function Home() {
   const conteo_usuarios = await prisma.usuario.count();
@@ -38,7 +38,7 @@ export default async function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/auth/registro"
-                className="flex min-w-40 cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform"
+                className="flex min-w-40 cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-soft hover:shadow-elevated hover:scale-[1.02] transition-all"
               >
                 Comenzar ahora
               </Link>
@@ -49,9 +49,9 @@ export default async function Home() {
             </div>
           </div>
           <div className="relative order-1 lg:order-2">
-            <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl"></div>
+            <div className="absolute -inset-3 bg-primary/5 rounded-2xl blur-xl"></div>
             <div
-              className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden aspect-4/3 flex items-center justify-center"
+              className="relative bg-white dark:bg-slate-900 rounded-xl shadow-elevated border border-slate-100 dark:border-slate-800 overflow-hidden aspect-4/3 flex items-center justify-center"
               data-alt="Interfaz digital de software tributario moderno"
               style={{
                 backgroundImage:
@@ -92,7 +92,7 @@ export default async function Home() {
             sin el estrés de cometer errores legales o financieros reales.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-left flex flex-col gap-4 ">
+            <div className="p-8 bg-white dark:bg-slate-800 rounded-xl shadow-card border border-slate-100 dark:border-slate-700/50 text-left flex flex-col gap-4 ">
               <span className=" text-primary text-4xl">
                 <FaShieldAlt />
               </span>
@@ -101,7 +101,7 @@ export default async function Home() {
                 Realiza pruebas ilimitadas con datos ficticios sin consecuencias legales.
               </p>
             </div>
-            <div className="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-left flex flex-col gap-4">
+            <div className="p-8 bg-white dark:bg-slate-800 rounded-xl shadow-card border border-slate-100 dark:border-slate-700/50 text-left flex flex-col gap-4">
               <span className=" text-primary text-4xl">
                 <MdMenuBook />
               </span>
@@ -110,7 +110,7 @@ export default async function Home() {
                 Tutoriales integrados que explican cada casilla y concepto técnico.
               </p>
             </div>
-            <div className="p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 text-left flex flex-col gap-4">
+            <div className="p-8 bg-white dark:bg-slate-800 rounded-xl shadow-card border border-slate-100 dark:border-slate-700/50 text-left flex flex-col gap-4">
               <span className=" text-primary text-4xl">
                 <MdDevices />
               </span>
@@ -132,8 +132,8 @@ export default async function Home() {
             <div className="h-1.5 w-24 bg-primary rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+            <div className="group p-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-primary/30 transition-all hover:shadow-elevated">
+              <div className="w-14 h-14 bg-primary-muted rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <span className="text-3xl">
                   <FaLockOpen />
                 </span>
@@ -144,8 +144,8 @@ export default async function Home() {
                 mental.
               </p>
             </div>
-            <div className="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+            <div className="group p-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-primary/30 transition-all hover:shadow-elevated">
+              <div className="w-14 h-14 bg-primary-muted rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <span className="text-3xl">
                   <MdEditDocument />
                 </span>
@@ -156,8 +156,8 @@ export default async function Home() {
                 deducciones.
               </p>
             </div>
-            <div className="group p-8 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all hover:shadow-xl">
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+            <div className="group p-8 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-primary/30 transition-all hover:shadow-elevated">
+              <div className="w-14 h-14 bg-primary-muted rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <span className="text-3xl">
                   <MdAccountTree />
                 </span>
@@ -176,7 +176,7 @@ export default async function Home() {
         className="px-6 md:px-20 lg:px-40 py-20 bg-dark text-white rounded-[2rem] mx-4 mb-20 overflow-hidden relative"
         id="caracteristicas"
       >
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="flex flex-col gap-8">
             <h2 className="text-3xl md:text-4xl font-black">Características Principales</h2>
@@ -186,7 +186,7 @@ export default async function Home() {
             </p>
             <ul className="flex flex-col gap-6">
               <li className="flex gap-4 items-start">
-                <div className="p-2 bg-primary rounded-lg text-white">
+                <div className="p-2 bg-primary/20 rounded-lg text-primary">
                   <HiViewGrid size={25} />
                 </div>
                 <div>
@@ -197,7 +197,7 @@ export default async function Home() {
                 </div>
               </li>
               <li className="flex gap-4 items-start">
-                <div className="p-2 bg-primary rounded-lg text-white">
+                <div className="p-2 bg-primary/20 rounded-lg text-primary">
                   <FaBoltLightning size={25} />
                 </div>
                 <div>
@@ -209,7 +209,7 @@ export default async function Home() {
                 </div>
               </li>
               <li className="flex gap-4 items-start">
-                <div className="p-2 bg-primary rounded-lg text-white">
+                <div className="p-2 bg-primary/20 rounded-lg text-primary">
                   <MdFolderShared size={25} />
                 </div>
                 <div>
@@ -224,25 +224,25 @@ export default async function Home() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
                 <span className="text-4xl font-black text-primary">2</span>
                 <span className="text-xs uppercase tracking-widest text-slate-400">
                   Formularios
                 </span>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
                 <span className="text-4xl font-black text-primary">24/7</span>
                 <span className="text-xs uppercase tracking-widest text-slate-400">Disponible</span>
               </div>
             </div>
             <div className="space-y-4 pt-8">
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 aspect-square flex flex-col justify-center items-center text-center gap-2">
                 <span className="text-4xl font-black text-primary">100%</span>
                 <span className="text-xs uppercase tracking-widest text-slate-400">Cloud</span>
               </div>
               <Link
                 href="/auth/registro"
-                className="bg-primary p-6 rounded-2xl shadow-xl shadow-primary/20 aspect-square flex flex-col justify-center items-center text-center gap-2"
+                className="bg-primary p-6 rounded-xl shadow-elevated shadow-primary/20 aspect-square flex flex-col justify-center items-center text-center gap-2"
               >
                 <span className="material-symbols-outlined text-4xl">
                   <HiRocketLaunch size={45} />
@@ -255,41 +255,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      {/*Footer */}
-      <footer className="px-6 md:px-20 lg:px-40 py-12 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-dark">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3 text-primary">
-            <span className="text-2xl font-bold">
-              <FaHandsHoldingChild size={45} />
-            </span>
-            <span className="text-slate-900 dark:text-slate-100 font-extrabold">
-              Simulador DIAN
-            </span>
-          </div>
-          <div className="flex gap-8 text-sm text-slate-500">
-            <a className="hover:text-primary transition-colors" href="#">
-              Términos
-            </a>
-            <a className="hover:text-primary transition-colors" href="#">
-              Privacidad
-            </a>
-            <a className="hover:text-primary transition-colors" href="#">
-              Contacto
-            </a>
-          </div>
-          <div className="flex gap-4">
-            <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white cursor-pointer transition-all">
-              <span className="text-sm">
-                <FaShare />
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400">
-          © 2026 Simulador DIAN Educativo. Todos los derechos reservados. Esta es una plataforma
-          educativa independiente.
-        </div>
-      </footer>
     </>
   );
 }

@@ -2322,10 +2322,6 @@ export type EnumestadosFieldUpdateOperationsInput = {
   set?: $Enums.estados
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type NullableDecimalFieldUpdateOperationsInput = {
   set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -4819,6 +4815,11 @@ export type formulario_500FindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` formulario_500s.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of formulario_500s.
+   */
   distinct?: Prisma.Formulario_500ScalarFieldEnum | Prisma.Formulario_500ScalarFieldEnum[]
 }
 

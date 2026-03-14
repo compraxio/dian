@@ -26,6 +26,7 @@ enum tipo_formulario {
 model usuario {
   id                Int                @id @default(autoincrement())
   nombre_usuario    String
+  avatar            String?
   correo            String             @unique
   contrasena        String
   rol               roles              @default(APRENDIZ)
@@ -40,7 +41,7 @@ model usuario {
 model Session {
   id        String   @id @default(cuid())
   usuario_id    Int
-  propietario     usuario     @relation(fields: [usuario_id], references: [id])
+  propietario     usuario     @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
   expiresAt DateTime
 }
 model documento {

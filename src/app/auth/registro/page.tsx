@@ -1,8 +1,8 @@
 'use client';
 
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputRegistro, registroSchema } from '../../../schemas/registroSchema';
@@ -11,28 +11,74 @@ import { InputRegistro, registroSchema } from '../../../schemas/registroSchema';
 import { IoMail, IoPersonSharp } from 'react-icons/io5';
 import { MdLock, MdLockReset, MdVisibility, MdVisibilityOff, MdErrorOutline } from 'react-icons/md';
 import { FcGoogle } from 'react-icons/fc';
+import { sileo } from 'sileo';
+import { registro } from '@/app/actions/auth/registro';
+import { useRouter } from 'next/navigation';
 
 export default function Registro() {
-  const [vercontrasena, setVercontrasena] = useState<boolean>(false);
-  // const { data: session } = useSession()
-  // console.log(session)
+  const router = useRouter();
+  const [vercontrasena, setVercontrasena] = useState(false);
+  const { data: session } = useSession();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<InputRegistro>({
     resolver: zodResolver(registroSchema),
     mode: 'onChange',
   });
 
+  useEffect(() => {
+    function google() {
+      if (session) {
+        setValue('nombre', session.user?.name ?? '');
+        setValue('correo', session.user?.email ?? '');
+      }
+    }
+    google();
+  }, [session, setValue]);
+
   const onSumbit: SubmitHandler<InputRegistro> = (data) => {
-    console.log(data);
+    sileo
+      .promise(
+        () =>
+          registro({
+            correo: data.correo,
+            nombre: data.nombre,
+            contrasena: data.contraseña1,
+            avatar: session?.user?.image ? session.user.image : '',
+          }),
+        {
+          loading: { title: 'Creando usuario..' },
+          success: (res: { ok: boolean; message: string }) => {
+            if (!res.ok) throw new Error(res.message);
+            return {
+              title: 'Usuario creado',
+              description: res.message,
+            };
+          },
+          error: (err: unknown) => {
+            const message = err instanceof Error ? err.message : 'Ocurrió un error inesperado';
+            return {
+              title: 'Error al crear usuario',
+              description: message,
+            };
+          },
+        },
+      )
+      .then((res: { ok: boolean; message: string }) => {
+        if (res?.ok) {
+          router.push('/auth/inicio_de_sesion');
+        }
+      });
   };
 
   return (
     <>
       <main className="flex flex-1 items-center justify-center px-4 py-12">
-        <div className="w-full max-w-120 space-y-8 rounded-2xl bg-white dark:bg-slate-900 p-8 shadow-xl shadow-primary/5 border border-primary/5">
+        <div className="w-full max-w-120 space-y-8 rounded-xl bg-white dark:bg-slate-900 p-8 shadow-elevated border border-slate-100 dark:border-slate-800">
           <div className="space-y-2 text-center">
             <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
               Crear Cuenta
@@ -52,7 +98,7 @@ export default function Registro() {
                   <IoPersonSharp />
                 </span>
                 <input
-                  className={`w-full rounded-xl border bg-white dark:bg-slate-800 py-4 pl-12 pr-4 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
+                  className={`w-full rounded-xl border bg-slate-50 dark:bg-slate-800/50 py-4 pl-12 pr-4 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
                     errors.nombre
                       ? 'border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/20'
                       : 'border-slate-200 dark:border-slate-700'
@@ -78,7 +124,7 @@ export default function Registro() {
                   <IoMail />
                 </span>
                 <input
-                  className={`w-full rounded-xl border bg-white dark:bg-slate-800 py-4 pl-12 pr-4 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
+                  className={`w-full rounded-xl border bg-slate-50 dark:bg-slate-800/50 py-4 pl-12 pr-4 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
                     errors.correo
                       ? 'border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/20'
                       : 'border-slate-200 dark:border-slate-700'
@@ -104,7 +150,7 @@ export default function Registro() {
                   <MdLock />
                 </span>
                 <input
-                  className={`w-full rounded-xl border bg-white dark:bg-slate-800 py-4 pl-12 pr-12 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
+                  className={`w-full rounded-xl border bg-slate-50 dark:bg-slate-800/50 py-4 pl-12 pr-12 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
                     errors.contraseña1
                       ? 'border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/20'
                       : 'border-slate-200 dark:border-slate-700'
@@ -139,7 +185,7 @@ export default function Registro() {
                   <MdLockReset size={25} />
                 </span>
                 <input
-                  className={`w-full rounded-xl border bg-white dark:bg-slate-800 py-4 pl-12 pr-12 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
+                  className={`w-full rounded-xl border bg-slate-50 dark:bg-slate-800/50 py-4 pl-12 pr-12 text-slate-900 dark:text-white outline-none ring-primary/20 transition-all focus:border-primary focus:ring-4 placeholder:text-slate-400 ${
                     errors.contraseña2
                       ? 'border-red-400 dark:border-red-500 focus:border-red-500 focus:ring-red-500/20'
                       : 'border-slate-200 dark:border-slate-700'
@@ -157,15 +203,15 @@ export default function Registro() {
               )}
             </div>
             <button
-              className="w-full rounded-xl bg-primary py-4 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 hover:scale-[1.01] active:scale-[0.99] focus:ring-4 focus:ring-primary/20"
+              className="w-full rounded-xl bg-primary py-4 text-base font-bold text-white shadow-soft hover:shadow-elevated transition-all hover:bg-primary/90 hover:scale-[1.01] active:scale-[0.99] focus:ring-4 focus:ring-primary/20"
               type="submit"
             >
               Crear Cuenta
             </button>
             <button
-              className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md active:scale-[0.99] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
+              className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 shadow-subtle transition-all hover:bg-slate-50 dark:hover:bg-slate-700 hover:shadow-soft active:scale-[0.99]"
               type="button"
-              onClick={() => signIn('google', { callbackUrl: '/' })}
+              onClick={() => signIn('google')}
             >
               <FcGoogle size={22} />
               Continuar con Google
@@ -177,7 +223,7 @@ export default function Registro() {
               ¿Ya tienes cuenta?
               <Link
                 className="font-bold text-primary hover:underline decoration-2 underline-offset-4"
-                href="/auth/inicio_de_secion"
+                href="/auth/inicio_de_sesion"
               >
                 Inicia sesión
               </Link>

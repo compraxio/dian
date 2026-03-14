@@ -5,8 +5,9 @@ import { ClassName } from '@/fonts/inter';
 import { Header } from '@/components/Header';
 
 import { ThemeProvider } from '@/components/theme-provider';
-import { Toaster } from 'sileo';
 import Providers from './Provider';
+import { Footer } from '@/components/Footer';
+import { SileoToaster } from '@/components/SileoToaster';
 
 export default function RootLayout({
   children,
@@ -26,12 +27,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Toaster position="top-center" />
             <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
               <div className="layout-container flex h-full grow flex-col">
                 {/*Usando header */}
-                <Header />
-                <main className="flex flex-col flex-1">{children}</main>
+                <Header lugar='inicio'/>
+                <main className="flex flex-col flex-1">
+                  {children}
+                  <SileoToaster />
+                  <Footer />
+                </main>
               </div>
             </div>
           </ThemeProvider>

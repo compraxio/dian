@@ -1,38 +1,92 @@
 'use client';
 
-import { FaHandsHoldingChild, FaRegClock } from 'react-icons/fa6';
+import { FaHandsHoldingChild, FaLock } from 'react-icons/fa6';
 import { IoLogIn, IoMail } from 'react-icons/io5';
 import { MdVisibility, MdVisibilityOff, MdErrorOutline } from 'react-icons/md';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
-
-
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ingresarSchema, InputIngresar } from '@/schemas/ingresarSchema';
 import { FcGoogle } from 'react-icons/fc';
+import { sileo } from 'sileo';
+import { iniciar_session } from '@/app/actions/auth/iniciar_session';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function IniciarSession() {
-  const [vercontrasena, setVercontrasena] = useState<boolean>(false);
+  const [vercontrasena, setVercontrasena] = useState(false);
+  const router = useRouter();
 
+  const { data: session } = useSession();
 
-  const { register, handleSubmit, formState: { errors } } = useForm<InputIngresar>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<InputIngresar>({
     resolver: zodResolver(ingresarSchema),
-    mode: 'onChange'
-  })
+    mode: 'onChange',
+  });
+
+  useEffect(() => {
+    function google() {
+      if (session) {
+        setValue('correo', session.user?.email ?? '');
+      }
+    }
+    google();
+  }, [session, setValue]);
 
   const onSumbit: SubmitHandler<InputIngresar> = (data) => {
-    console.log(data)
-  }
+    sileo
+      .promise(() => iniciar_session({ correo: data.correo, contrasena: data.contraseña }), {
+        loading: { title: 'verificando datos' },
+        success: (res: { ok: boolean; message: string }) => {
+          if (!res.ok) throw new Error(res.message);
+          return {
+            title: 'Datos validos',
+            // description: res.message,
+            description: (
+              <div className="flex flex-col items-center justify-center gap-2">
+                {session?.user?.image && (
+                  <Avatar>
+                    <AvatarImage src={session.user.image} alt={session.user.name ?? ''} />
+                    <AvatarFallback>{session.user.name}</AvatarFallback>
+                  </Avatar>
+                )}
+                <span className="text-xs! text-muted-foreground!">
+                  {`${res.message} ${session?.user?.name}`}
+                </span>
+              </div>
+            ),
+          };
+        },
+        error: (err: unknown) => {
+          const message = err instanceof Error ? err.message : 'Ocurrió un error inesperado';
+          return {
+            title: 'Error al comprovar datos',
+            description: message,
+          };
+        },
+      })
+      .then((res: { ok: boolean; message: string }) => {
+        if (res?.ok) {
+          router.prefetch('/dashboard');
+          router.push('/dashboard');
+        }
+      });
+  };
 
   return (
     <>
       <main className="flex-1 flex items-center justify-center p-6 lg:p-12">
-        <div className="w-full max-w-120 bg-white dark:bg-dark/80 rounded-xl shadow-xl border border-primary/5 overflow-hidden">
+        <div className="w-full max-w-120 bg-white dark:bg-slate-900 rounded-xl shadow-elevated border border-slate-100 dark:border-slate-800 overflow-hidden">
           <div className="relative h-40 w-full bg-primary/10 overflow-hidden">
             <div
-              className="absolute inset-0 bg-linear-to-br from-primary to-orange-400 opacity-90"
+              className="absolute inset-0 bg-linear-to-br from-primary to-orange-400 opacity-80"
               data-alt="Abstract orange geometric pattern for financial simulation"
             ></div>
             <div className="relative h-full flex flex-col items-center justify-center text-white px-8 text-center">
@@ -65,7 +119,7 @@ export default function IniciarSession() {
                     <IoMail />
                   </span>
                   <input
-                    className={`w-full pl-12 pr-4 py-3.5 rounded-lg border bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
+                    className={`w-full pl-12 pr-4 py-3.5 rounded-lg border bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all outline-none ${
                       errors.correo
                         ? 'border-red-400 dark:border-red-500 focus:ring-red-500/20'
                         : 'border-slate-200 dark:border-slate-700'
@@ -97,10 +151,10 @@ export default function IniciarSession() {
                 </div>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">
-                    <FaRegClock />
+                    <FaLock />
                   </span>
                   <input
-                    className={`w-full pl-12 pr-12 py-3.5 rounded-lg border bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
+                    className={`w-full pl-12 pr-12 py-3.5 rounded-lg border bg-slate-50 dark:bg-slate-800/50 focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all outline-none ${
                       errors.contraseña
                         ? 'border-red-400 dark:border-red-500 focus:ring-red-500/20'
                         : 'border-slate-200 dark:border-slate-700'
@@ -130,20 +184,21 @@ export default function IniciarSession() {
                 )}
               </div>
               <button
-                className="w-full bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/20 hover:bg-orange-600 transition-all flex items-center justify-center gap-2 mt-2"
+                className="w-full bg-primary text-white font-bold py-4 rounded-lg shadow-soft hover:shadow-elevated transition-all flex items-center justify-center gap-2 mt-2"
                 type="submit"
               >
                 <span>Iniciar Sesión</span>
                 <IoLogIn size={25} />
               </button>
+
               <button
-                            className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md active:scale-[0.99] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
-                            type="button"
-                            onClick={() => signIn('google', { callbackUrl: '/' })}
-                          >
-                            <FcGoogle size={22} />
-                            Continuar con Google
-                          </button>
+                className="w-full flex items-center justify-center gap-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 shadow-subtle transition-all hover:bg-slate-50 dark:hover:bg-slate-700 hover:shadow-soft active:scale-[0.99]"
+                type="button"
+                onClick={() => signIn('google')}
+              >
+                <FcGoogle size={22} />
+                Continuar con Google
+              </button>
             </form>
 
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
