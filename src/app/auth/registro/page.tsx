@@ -4,7 +4,7 @@ import { FaUserPlus } from 'react-icons/fa6';
 import { IoMail, IoPersonSharp } from 'react-icons/io5';
 import { MdLock, MdLockReset, MdVisibility, MdVisibilityOff, MdErrorOutline } from 'react-icons/md';
 import { FcGoogle } from 'react-icons/fc';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -65,15 +65,18 @@ export default function Registro() {
   };
 
   const handleGoogleSignIn = () => {
-    signIn('google', { callbackUrl: '/dashboard' });
+    signIn('google');
   };
 
-  const setGoogleValues = () => {
-    if (session) {
-      setValue('nombre', session.user?.name ?? '');
-      setValue('correo', session.user?.email ?? '');
-    }
-  };
+  useEffect(() => {
+    const setGoogleValues = () => {
+      if (session) {
+        setValue('nombre', session.user?.name ?? '');
+        setValue('correo', session.user?.email ?? '');
+      }
+    };
+    setGoogleValues();
+  }, [session, setValue]);
 
   return (
     <>
@@ -249,7 +252,10 @@ export default function Registro() {
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
               <p className="text-sm text-slate-500 dark:text-slate-400">
                 ¿Ya tienes cuenta?
-                <Link className="text-primary font-bold hover:underline ml-1" href="/auth/inicio_de_sesion">
+                <Link
+                  className="text-primary font-bold hover:underline ml-1"
+                  href="/auth/inicio_de_sesion"
+                >
                   Inicia sesión
                 </Link>
               </p>
@@ -257,20 +263,6 @@ export default function Registro() {
           </div>
         </div>
       </main>
-      <footer className="mt-auto px-6 py-8 text-center text-slate-400 text-sm">
-        <div className="flex flex-wrap justify-center gap-6 mb-4">
-          <a className="hover:text-primary transition-colors" href="#">
-            Términos y condiciones
-          </a>
-          <a className="hover:text-primary transition-colors" href="#">
-            Privacidad
-          </a>
-          <a className="hover:text-primary transition-colors" href="#">
-            Ayuda
-          </a>
-        </div>
-        <p>© 2026 Simulador DIAN. Todos los derechos reservados.</p>
-      </footer>
     </>
   );
 }

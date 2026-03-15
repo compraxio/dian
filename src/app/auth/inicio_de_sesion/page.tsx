@@ -58,7 +58,7 @@ export default function IniciarSession() {
                   </Avatar>
                 )}
                 <span className="text-xs! text-muted-foreground!">
-                  {`${res.message} ${session?.user?.name}`}
+                  {`${res.message} ${session?.user?.name ?? 'usuario'}`}
                 </span>
               </div>
             ),
@@ -212,20 +212,6 @@ export default function IniciarSession() {
           </div>
         </div>
       </main>
-      <footer className="mt-auto px-6 py-8 text-center text-slate-400 text-sm">
-        <div className="flex flex-wrap justify-center gap-6 mb-4">
-          <a className="hover:text-primary transition-colors" href="#">
-            Términos y condiciones
-          </a>
-          <a className="hover:text-primary transition-colors" href="#">
-            Privacidad
-          </a>
-          <a className="hover:text-primary transition-colors" href="#">
-            Ayuda
-          </a>
-        </div>
-        <p>© 2026 Simulador DIAN. Todos los derechos reservados.</p>
-      </footer>
     </>
   );
 }

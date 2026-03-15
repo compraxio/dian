@@ -35,7 +35,6 @@ import { FaFolder } from 'react-icons/fa';
 import { FaRegUser } from 'react-icons/fa6';
 
 import { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
 import { sileo } from 'sileo';
 import { Logouth } from '@/app/actions/auth/logount';
 
@@ -67,7 +66,6 @@ type usuario = Prisma.usuarioGetPayload<object>;
 export function AppSidebar() {
   const pathname = usePathname();
   const isDashboardFormRoute = pathname.startsWith('/dashboard/formularios/formulario500');
-  const { data: session } = useSession();
   const [usuario, setUsuario] = useState<usuario>();
   const router = useRouter();
   useEffect(() => {
@@ -127,7 +125,7 @@ export function AppSidebar() {
                     ) : (
                       <FaRegUser size={25} />
                     )}
-                    <AvatarFallback>JD</AvatarFallback>
+                    {usuario?.avatar && <AvatarFallback>JD</AvatarFallback>}
                   </Avatar>
                   <div className="flex flex-col items-start text-left">
                     <span className="text-sm font-semibold">{usuario?.nombre_usuario}</span>
@@ -165,7 +163,7 @@ export function AppSidebar() {
                             description: (
                               <div className="flex flex-col items-center justify-center gap-2">
                                 <span className="text-xs text-muted-foreground">
-                                  {`Adiós ${session?.user?.name ?? 'usuario'}, te esperamos de regreso`}
+                                  {`Adiós ${usuario?.nombre_usuario ?? 'usuario'}, te esperamos de regreso`}
                                 </span>
                               </div>
                             ),
