@@ -35,6 +35,8 @@ model usuario {
   documentos        documento[]
   formularios_500   formulario_500[]
   sesiones Session[]
+  tokens ResetearContrasenaToken[]
+
   @@index([rol])
 }
 
@@ -43,6 +45,14 @@ model Session {
   usuario_id    Int
   propietario     usuario     @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
   expiresAt DateTime
+}
+
+model ResetearContrasenaToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  usuario_id Int
+  expiresAt DateTime
+  usuario   usuario  @relation(fields: [usuario_id], references: [id], onDelete: Cascade)
 }
 model documento {
   id             Int             @id @default(autoincrement())

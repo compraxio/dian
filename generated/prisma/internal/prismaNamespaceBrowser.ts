@@ -53,6 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   usuario: 'usuario',
   Session: 'Session',
+  ResetearContrasenaToken: 'ResetearContrasenaToken',
   documento: 'documento',
   formulario_500: 'formulario_500',
   formulario_500_items: 'formulario_500_items'
@@ -95,6 +96,16 @@ export const SessionScalarFieldEnum = {
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const ResetearContrasenaTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  usuario_id: 'usuario_id',
+  expiresAt: 'expiresAt'
+} as const
+
+export type ResetearContrasenaTokenScalarFieldEnum = (typeof ResetearContrasenaTokenScalarFieldEnum)[keyof typeof ResetearContrasenaTokenScalarFieldEnum]
 
 
 export const DocumentoScalarFieldEnum = {

@@ -10,6 +10,7 @@
  */
 export type * from './models/usuario'
 export type * from './models/Session'
+export type * from './models/ResetearContrasenaToken'
 export type * from './models/documento'
 export type * from './models/formulario_500'
 export type * from './models/formulario_500_items'

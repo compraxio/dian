@@ -386,6 +386,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   usuario: 'usuario',
   Session: 'Session',
+  ResetearContrasenaToken: 'ResetearContrasenaToken',
   documento: 'documento',
   formulario_500: 'formulario_500',
   formulario_500_items: 'formulario_500_items'
@@ -404,7 +405,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "session" | "documento" | "formulario_500" | "formulario_500_items"
+    modelProps: "usuario" | "session" | "resetearContrasenaToken" | "documento" | "formulario_500" | "formulario_500_items"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +554,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.SessionCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.SessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    ResetearContrasenaToken: {
+      payload: Prisma.$ResetearContrasenaTokenPayload<ExtArgs>
+      fields: Prisma.ResetearContrasenaTokenFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ResetearContrasenaTokenFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ResetearContrasenaTokenFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        findFirst: {
+          args: Prisma.ResetearContrasenaTokenFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ResetearContrasenaTokenFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        findMany: {
+          args: Prisma.ResetearContrasenaTokenFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>[]
+        }
+        create: {
+          args: Prisma.ResetearContrasenaTokenCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        createMany: {
+          args: Prisma.ResetearContrasenaTokenCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ResetearContrasenaTokenCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>[]
+        }
+        delete: {
+          args: Prisma.ResetearContrasenaTokenDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        update: {
+          args: Prisma.ResetearContrasenaTokenUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        deleteMany: {
+          args: Prisma.ResetearContrasenaTokenDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ResetearContrasenaTokenUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ResetearContrasenaTokenUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>[]
+        }
+        upsert: {
+          args: Prisma.ResetearContrasenaTokenUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResetearContrasenaTokenPayload>
+        }
+        aggregate: {
+          args: Prisma.ResetearContrasenaTokenAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateResetearContrasenaToken>
+        }
+        groupBy: {
+          args: Prisma.ResetearContrasenaTokenGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResetearContrasenaTokenGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ResetearContrasenaTokenCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResetearContrasenaTokenCountAggregateOutputType> | number
         }
       }
     }
@@ -838,6 +913,16 @@ export const SessionScalarFieldEnum = {
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
+
+
+export const ResetearContrasenaTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  usuario_id: 'usuario_id',
+  expiresAt: 'expiresAt'
+} as const
+
+export type ResetearContrasenaTokenScalarFieldEnum = (typeof ResetearContrasenaTokenScalarFieldEnum)[keyof typeof ResetearContrasenaTokenScalarFieldEnum]
 
 
 export const DocumentoScalarFieldEnum = {
@@ -1234,6 +1319,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   usuario?: Prisma.usuarioOmit
   session?: Prisma.SessionOmit
+  resetearContrasenaToken?: Prisma.ResetearContrasenaTokenOmit
   documento?: Prisma.documentoOmit
   formulario_500?: Prisma.formulario_500Omit
   formulario_500_items?: Prisma.formulario_500_itemsOmit

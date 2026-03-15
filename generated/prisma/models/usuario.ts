@@ -243,6 +243,7 @@ export type usuarioWhereInput = {
   documentos?: Prisma.DocumentoListRelationFilter
   formularios_500?: Prisma.Formulario_500ListRelationFilter
   sesiones?: Prisma.SessionListRelationFilter
+  tokens?: Prisma.ResetearContrasenaTokenListRelationFilter
 }
 
 export type usuarioOrderByWithRelationInput = {
@@ -257,6 +258,7 @@ export type usuarioOrderByWithRelationInput = {
   documentos?: Prisma.documentoOrderByRelationAggregateInput
   formularios_500?: Prisma.formulario_500OrderByRelationAggregateInput
   sesiones?: Prisma.SessionOrderByRelationAggregateInput
+  tokens?: Prisma.ResetearContrasenaTokenOrderByRelationAggregateInput
 }
 
 export type usuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -274,6 +276,7 @@ export type usuarioWhereUniqueInput = Prisma.AtLeast<{
   documentos?: Prisma.DocumentoListRelationFilter
   formularios_500?: Prisma.Formulario_500ListRelationFilter
   sesiones?: Prisma.SessionListRelationFilter
+  tokens?: Prisma.ResetearContrasenaTokenListRelationFilter
 }, "id" | "correo">
 
 export type usuarioOrderByWithAggregationInput = {
@@ -317,6 +320,7 @@ export type usuarioCreateInput = {
   documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioUncheckedCreateInput = {
@@ -331,6 +335,7 @@ export type usuarioUncheckedCreateInput = {
   documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioUpdateInput = {
@@ -344,6 +349,7 @@ export type usuarioUpdateInput = {
   documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioUncheckedUpdateInput = {
@@ -358,6 +364,7 @@ export type usuarioUncheckedUpdateInput = {
   documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioCreateManyInput = {
@@ -480,6 +487,20 @@ export type usuarioUpdateOneRequiredWithoutSesionesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.usuarioUpdateToOneWithWhereWithoutSesionesInput, Prisma.usuarioUpdateWithoutSesionesInput>, Prisma.usuarioUncheckedUpdateWithoutSesionesInput>
 }
 
+export type usuarioCreateNestedOneWithoutTokensInput = {
+  create?: Prisma.XOR<Prisma.usuarioCreateWithoutTokensInput, Prisma.usuarioUncheckedCreateWithoutTokensInput>
+  connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutTokensInput
+  connect?: Prisma.usuarioWhereUniqueInput
+}
+
+export type usuarioUpdateOneRequiredWithoutTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.usuarioCreateWithoutTokensInput, Prisma.usuarioUncheckedCreateWithoutTokensInput>
+  connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutTokensInput
+  upsert?: Prisma.usuarioUpsertWithoutTokensInput
+  connect?: Prisma.usuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.usuarioUpdateToOneWithWhereWithoutTokensInput, Prisma.usuarioUpdateWithoutTokensInput>, Prisma.usuarioUncheckedUpdateWithoutTokensInput>
+}
+
 export type usuarioCreateNestedOneWithoutDocumentosInput = {
   create?: Prisma.XOR<Prisma.usuarioCreateWithoutDocumentosInput, Prisma.usuarioUncheckedCreateWithoutDocumentosInput>
   connectOrCreate?: Prisma.usuarioCreateOrConnectWithoutDocumentosInput
@@ -518,6 +539,7 @@ export type usuarioCreateWithoutSesionesInput = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioUncheckedCreateWithoutSesionesInput = {
@@ -531,6 +553,7 @@ export type usuarioUncheckedCreateWithoutSesionesInput = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
   formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioCreateOrConnectWithoutSesionesInput = {
@@ -559,6 +582,7 @@ export type usuarioUpdateWithoutSesionesInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioUncheckedUpdateWithoutSesionesInput = {
@@ -572,6 +596,77 @@ export type usuarioUncheckedUpdateWithoutSesionesInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
   formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type usuarioCreateWithoutTokensInput = {
+  nombre_usuario: string
+  avatar?: string | null
+  correo: string
+  contrasena: string
+  rol?: $Enums.roles
+  fecha_de_creacion?: Date | string
+  ultima_sesion?: Date | string | null
+  documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
+  formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
+}
+
+export type usuarioUncheckedCreateWithoutTokensInput = {
+  id?: number
+  nombre_usuario: string
+  avatar?: string | null
+  correo: string
+  contrasena: string
+  rol?: $Enums.roles
+  fecha_de_creacion?: Date | string
+  ultima_sesion?: Date | string | null
+  documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
+  formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
+  sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
+}
+
+export type usuarioCreateOrConnectWithoutTokensInput = {
+  where: Prisma.usuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.usuarioCreateWithoutTokensInput, Prisma.usuarioUncheckedCreateWithoutTokensInput>
+}
+
+export type usuarioUpsertWithoutTokensInput = {
+  update: Prisma.XOR<Prisma.usuarioUpdateWithoutTokensInput, Prisma.usuarioUncheckedUpdateWithoutTokensInput>
+  create: Prisma.XOR<Prisma.usuarioCreateWithoutTokensInput, Prisma.usuarioUncheckedCreateWithoutTokensInput>
+  where?: Prisma.usuarioWhereInput
+}
+
+export type usuarioUpdateToOneWithWhereWithoutTokensInput = {
+  where?: Prisma.usuarioWhereInput
+  data: Prisma.XOR<Prisma.usuarioUpdateWithoutTokensInput, Prisma.usuarioUncheckedUpdateWithoutTokensInput>
+}
+
+export type usuarioUpdateWithoutTokensInput = {
+  nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
+  fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
+  formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
+}
+
+export type usuarioUncheckedUpdateWithoutTokensInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre_usuario?: Prisma.StringFieldUpdateOperationsInput | string
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  contrasena?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumrolesFieldUpdateOperationsInput | $Enums.roles
+  fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
+  formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
+  sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
 }
 
 export type usuarioCreateWithoutDocumentosInput = {
@@ -584,6 +679,7 @@ export type usuarioCreateWithoutDocumentosInput = {
   ultima_sesion?: Date | string | null
   formularios_500?: Prisma.formulario_500CreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioUncheckedCreateWithoutDocumentosInput = {
@@ -597,6 +693,7 @@ export type usuarioUncheckedCreateWithoutDocumentosInput = {
   ultima_sesion?: Date | string | null
   formularios_500?: Prisma.formulario_500UncheckedCreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioCreateOrConnectWithoutDocumentosInput = {
@@ -625,6 +722,7 @@ export type usuarioUpdateWithoutDocumentosInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   formularios_500?: Prisma.formulario_500UpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioUncheckedUpdateWithoutDocumentosInput = {
@@ -638,6 +736,7 @@ export type usuarioUncheckedUpdateWithoutDocumentosInput = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   formularios_500?: Prisma.formulario_500UncheckedUpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioCreateWithoutFormularios_500Input = {
@@ -650,6 +749,7 @@ export type usuarioCreateWithoutFormularios_500Input = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoCreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioUncheckedCreateWithoutFormularios_500Input = {
@@ -663,6 +763,7 @@ export type usuarioUncheckedCreateWithoutFormularios_500Input = {
   ultima_sesion?: Date | string | null
   documentos?: Prisma.documentoUncheckedCreateNestedManyWithoutPropietarioInput
   sesiones?: Prisma.SessionUncheckedCreateNestedManyWithoutPropietarioInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type usuarioCreateOrConnectWithoutFormularios_500Input = {
@@ -691,6 +792,7 @@ export type usuarioUpdateWithoutFormularios_500Input = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUpdateManyWithoutUsuarioNestedInput
 }
 
 export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
@@ -704,6 +806,7 @@ export type usuarioUncheckedUpdateWithoutFormularios_500Input = {
   ultima_sesion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   documentos?: Prisma.documentoUncheckedUpdateManyWithoutPropietarioNestedInput
   sesiones?: Prisma.SessionUncheckedUpdateManyWithoutPropietarioNestedInput
+  tokens?: Prisma.ResetearContrasenaTokenUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -715,12 +818,14 @@ export type UsuarioCountOutputType = {
   documentos: number
   formularios_500: number
   sesiones: number
+  tokens: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentos?: boolean | UsuarioCountOutputTypeCountDocumentosArgs
   formularios_500?: boolean | UsuarioCountOutputTypeCountFormularios_500Args
   sesiones?: boolean | UsuarioCountOutputTypeCountSesionesArgs
+  tokens?: boolean | UsuarioCountOutputTypeCountTokensArgs
 }
 
 /**
@@ -754,6 +859,13 @@ export type UsuarioCountOutputTypeCountSesionesArgs<ExtArgs extends runtime.Type
   where?: Prisma.SessionWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ResetearContrasenaTokenWhereInput
+}
+
 
 export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -767,6 +879,7 @@ export type usuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   documentos?: boolean | Prisma.usuario$documentosArgs<ExtArgs>
   formularios_500?: boolean | Prisma.usuario$formularios_500Args<ExtArgs>
   sesiones?: boolean | Prisma.usuario$sesionesArgs<ExtArgs>
+  tokens?: boolean | Prisma.usuario$tokensArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -808,6 +921,7 @@ export type usuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   documentos?: boolean | Prisma.usuario$documentosArgs<ExtArgs>
   formularios_500?: boolean | Prisma.usuario$formularios_500Args<ExtArgs>
   sesiones?: boolean | Prisma.usuario$sesionesArgs<ExtArgs>
+  tokens?: boolean | Prisma.usuario$tokensArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type usuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -819,6 +933,7 @@ export type $usuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     documentos: Prisma.$documentoPayload<ExtArgs>[]
     formularios_500: Prisma.$formulario_500Payload<ExtArgs>[]
     sesiones: Prisma.$SessionPayload<ExtArgs>[]
+    tokens: Prisma.$ResetearContrasenaTokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1226,6 +1341,7 @@ export interface Prisma__usuarioClient<T, Null = never, ExtArgs extends runtime.
   documentos<T extends Prisma.usuario$documentosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$documentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   formularios_500<T extends Prisma.usuario$formularios_500Args<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$formularios_500Args<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$formulario_500Payload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sesiones<T extends Prisma.usuario$sesionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$sesionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tokens<T extends Prisma.usuario$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usuario$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResetearContrasenaTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1725,6 +1841,30 @@ export type usuario$sesionesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
+}
+
+/**
+ * usuario.tokens
+ */
+export type usuario$tokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ResetearContrasenaToken
+   */
+  select?: Prisma.ResetearContrasenaTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ResetearContrasenaToken
+   */
+  omit?: Prisma.ResetearContrasenaTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ResetearContrasenaTokenInclude<ExtArgs> | null
+  where?: Prisma.ResetearContrasenaTokenWhereInput
+  orderBy?: Prisma.ResetearContrasenaTokenOrderByWithRelationInput | Prisma.ResetearContrasenaTokenOrderByWithRelationInput[]
+  cursor?: Prisma.ResetearContrasenaTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResetearContrasenaTokenScalarFieldEnum | Prisma.ResetearContrasenaTokenScalarFieldEnum[]
 }
 
 /**

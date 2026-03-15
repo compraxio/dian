@@ -145,7 +145,7 @@ export default function IniciarSession() {
                   >
                     Contraseña
                   </label>
-                  <a className="text-xs font-bold text-primary hover:underline" href="#">
+                  <a className="text-xs font-bold text-primary hover:underline" href="/auth/restablecer_contrasena_correo">
                     ¿Olvidaste tu contraseña?
                   </a>
                 </div>

@@ -28,6 +28,11 @@ export type usuario = Prisma.usuarioModel
  */
 export type Session = Prisma.SessionModel
 /**
+ * Model ResetearContrasenaToken
+ * 
+ */
+export type ResetearContrasenaToken = Prisma.ResetearContrasenaTokenModel
+/**
  * Model documento
  * 
  */
