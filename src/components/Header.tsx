@@ -120,18 +120,22 @@ export function Header({ lugar }: { lugar: 'inicio' | 'dashboard' }) {
                   setClikSidebar(!clikSidebar);
                 }}
               />
-              <div className="flex items-center flex-1 max-w-md">
-                <div className="relative w-full">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
-                    <MdSearch className="text-xl" size={25} />
-                  </span>
-                  <input
-                    className="block w-full pl-10 pr-3 py-2 border-none bg-light dark:bg-dark rounded-lg focus:ring-2 focus:ring-primary/50 text-sm"
-                    placeholder="Buscar trámites o documentos..."
-                    type="text"
-                  />
+              {
+                <div
+                  className={`${pathName === '/dashboard' ? 'hidden' : 'flex'} items-center flex-1 max-w-md`}
+                >
+                  <div className="relative w-full">
+                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                      <MdSearch className="text-xl" size={25} />
+                    </span>
+                    <input
+                      className="block w-full pl-10 pr-3 py-2 border-none bg-light dark:bg-dark rounded-lg focus:ring-2 focus:ring-primary/50 text-sm"
+                      placeholder="Buscar trámites o documentos..."
+                      type="text"
+                    />
+                  </div>
                 </div>
-              </div>
+              }
             </>
           )}
           {pathName === '/dashboard/formularios' && (

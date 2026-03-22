@@ -125,6 +125,7 @@ export const Formulario_500ScalarFieldEnum = {
   id: 'id',
   usuario_id: 'usuario_id',
   tipo_formulario: 'tipo_formulario',
+  nombre_formulario: 'nombre_formulario',
   estado: 'estado',
   fecha_de_creacion: 'fecha_de_creacion',
   fecha_actualizacion: 'fecha_actualizacion',

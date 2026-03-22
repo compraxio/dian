@@ -122,6 +122,7 @@ export type Formulario_500MinAggregateOutputType = {
   id: number | null
   usuario_id: number | null
   tipo_formulario: $Enums.tipo_formulario | null
+  nombre_formulario: string | null
   estado: $Enums.estados | null
   fecha_de_creacion: Date | null
   fecha_actualizacion: Date | null
@@ -203,6 +204,7 @@ export type Formulario_500MaxAggregateOutputType = {
   id: number | null
   usuario_id: number | null
   tipo_formulario: $Enums.tipo_formulario | null
+  nombre_formulario: string | null
   estado: $Enums.estados | null
   fecha_de_creacion: Date | null
   fecha_actualizacion: Date | null
@@ -284,6 +286,7 @@ export type Formulario_500CountAggregateOutputType = {
   id: number
   usuario_id: number
   tipo_formulario: number
+  nombre_formulario: number
   estado: number
   fecha_de_creacion: number
   fecha_actualizacion: number
@@ -460,6 +463,7 @@ export type Formulario_500MinAggregateInputType = {
   id?: true
   usuario_id?: true
   tipo_formulario?: true
+  nombre_formulario?: true
   estado?: true
   fecha_de_creacion?: true
   fecha_actualizacion?: true
@@ -541,6 +545,7 @@ export type Formulario_500MaxAggregateInputType = {
   id?: true
   usuario_id?: true
   tipo_formulario?: true
+  nombre_formulario?: true
   estado?: true
   fecha_de_creacion?: true
   fecha_actualizacion?: true
@@ -622,6 +627,7 @@ export type Formulario_500CountAggregateInputType = {
   id?: true
   usuario_id?: true
   tipo_formulario?: true
+  nombre_formulario?: true
   estado?: true
   fecha_de_creacion?: true
   fecha_actualizacion?: true
@@ -791,9 +797,10 @@ export type Formulario_500GroupByOutputType = {
   id: number
   usuario_id: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado: $Enums.estados
   fecha_de_creacion: Date
-  fecha_actualizacion: Date
+  fecha_actualizacion: Date | null
   progreso: number | null
   paso_actual: number | null
   checklist: runtime.JsonValue
@@ -896,9 +903,10 @@ export type formulario_500WhereInput = {
   id?: Prisma.IntFilter<"formulario_500"> | number
   usuario_id?: Prisma.IntFilter<"formulario_500"> | number
   tipo_formulario?: Prisma.Enumtipo_formularioFilter<"formulario_500"> | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFilter<"formulario_500"> | string
   estado?: Prisma.EnumestadosFilter<"formulario_500"> | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
+  fecha_actualizacion?: Prisma.DateTimeNullableFilter<"formulario_500"> | Date | string | null
   progreso?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   paso_actual?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   checklist?: Prisma.JsonFilter<"formulario_500">
@@ -981,9 +989,10 @@ export type formulario_500OrderByWithRelationInput = {
   id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo_formulario?: Prisma.SortOrder
+  nombre_formulario?: Prisma.SortOrder
   estado?: Prisma.SortOrder
   fecha_de_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   progreso?: Prisma.SortOrderInput | Prisma.SortOrder
   paso_actual?: Prisma.SortOrderInput | Prisma.SortOrder
   checklist?: Prisma.SortOrder
@@ -1069,9 +1078,10 @@ export type formulario_500WhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.formulario_500WhereInput | Prisma.formulario_500WhereInput[]
   usuario_id?: Prisma.IntFilter<"formulario_500"> | number
   tipo_formulario?: Prisma.Enumtipo_formularioFilter<"formulario_500"> | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFilter<"formulario_500"> | string
   estado?: Prisma.EnumestadosFilter<"formulario_500"> | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
+  fecha_actualizacion?: Prisma.DateTimeNullableFilter<"formulario_500"> | Date | string | null
   progreso?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   paso_actual?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   checklist?: Prisma.JsonFilter<"formulario_500">
@@ -1154,9 +1164,10 @@ export type formulario_500OrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo_formulario?: Prisma.SortOrder
+  nombre_formulario?: Prisma.SortOrder
   estado?: Prisma.SortOrder
   fecha_de_creacion?: Prisma.SortOrder
-  fecha_actualizacion?: Prisma.SortOrder
+  fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   progreso?: Prisma.SortOrderInput | Prisma.SortOrder
   paso_actual?: Prisma.SortOrderInput | Prisma.SortOrder
   checklist?: Prisma.SortOrder
@@ -1244,9 +1255,10 @@ export type formulario_500ScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"formulario_500"> | number
   usuario_id?: Prisma.IntWithAggregatesFilter<"formulario_500"> | number
   tipo_formulario?: Prisma.Enumtipo_formularioWithAggregatesFilter<"formulario_500"> | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringWithAggregatesFilter<"formulario_500"> | string
   estado?: Prisma.EnumestadosWithAggregatesFilter<"formulario_500"> | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeWithAggregatesFilter<"formulario_500"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeWithAggregatesFilter<"formulario_500"> | Date | string
+  fecha_actualizacion?: Prisma.DateTimeNullableWithAggregatesFilter<"formulario_500"> | Date | string | null
   progreso?: Prisma.IntNullableWithAggregatesFilter<"formulario_500"> | number | null
   paso_actual?: Prisma.IntNullableWithAggregatesFilter<"formulario_500"> | number | null
   checklist?: Prisma.JsonWithAggregatesFilter<"formulario_500">
@@ -1324,9 +1336,10 @@ export type formulario_500ScalarWhereWithAggregatesInput = {
 
 export type formulario_500CreateInput = {
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1409,9 +1422,10 @@ export type formulario_500UncheckedCreateInput = {
   id?: number
   usuario_id: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1491,9 +1505,10 @@ export type formulario_500UncheckedCreateInput = {
 
 export type formulario_500UpdateInput = {
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1576,9 +1591,10 @@ export type formulario_500UncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1660,9 +1676,10 @@ export type formulario_500CreateManyInput = {
   id?: number
   usuario_id: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1740,9 +1757,10 @@ export type formulario_500CreateManyInput = {
 
 export type formulario_500UpdateManyMutationInput = {
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1822,9 +1840,10 @@ export type formulario_500UncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1919,6 +1938,7 @@ export type formulario_500CountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo_formulario?: Prisma.SortOrder
+  nombre_formulario?: Prisma.SortOrder
   estado?: Prisma.SortOrder
   fecha_de_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
@@ -2047,6 +2067,7 @@ export type formulario_500MaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo_formulario?: Prisma.SortOrder
+  nombre_formulario?: Prisma.SortOrder
   estado?: Prisma.SortOrder
   fecha_de_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
@@ -2128,6 +2149,7 @@ export type formulario_500MinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo_formulario?: Prisma.SortOrder
+  nombre_formulario?: Prisma.SortOrder
   estado?: Prisma.SortOrder
   fecha_de_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
@@ -2346,9 +2368,10 @@ export type formulario_500UpdateOneRequiredWithoutItemsNestedInput = {
 
 export type formulario_500CreateWithoutPropietarioInput = {
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2429,9 +2452,10 @@ export type formulario_500CreateWithoutPropietarioInput = {
 export type formulario_500UncheckedCreateWithoutPropietarioInput = {
   id?: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2542,9 +2566,10 @@ export type formulario_500ScalarWhereInput = {
   id?: Prisma.IntFilter<"formulario_500"> | number
   usuario_id?: Prisma.IntFilter<"formulario_500"> | number
   tipo_formulario?: Prisma.Enumtipo_formularioFilter<"formulario_500"> | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFilter<"formulario_500"> | string
   estado?: Prisma.EnumestadosFilter<"formulario_500"> | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFilter<"formulario_500"> | Date | string
+  fecha_actualizacion?: Prisma.DateTimeNullableFilter<"formulario_500"> | Date | string | null
   progreso?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   paso_actual?: Prisma.IntNullableFilter<"formulario_500"> | number | null
   checklist?: Prisma.JsonFilter<"formulario_500">
@@ -2622,9 +2647,10 @@ export type formulario_500ScalarWhereInput = {
 
 export type formulario_500CreateWithoutDocumentosInput = {
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2706,9 +2732,10 @@ export type formulario_500UncheckedCreateWithoutDocumentosInput = {
   id?: number
   usuario_id: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2803,9 +2830,10 @@ export type formulario_500UpdateToOneWithWhereWithoutDocumentosInput = {
 
 export type formulario_500UpdateWithoutDocumentosInput = {
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2887,9 +2915,10 @@ export type formulario_500UncheckedUpdateWithoutDocumentosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2968,9 +2997,10 @@ export type formulario_500UncheckedUpdateWithoutDocumentosInput = {
 
 export type formulario_500CreateWithoutItemsInput = {
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3052,9 +3082,10 @@ export type formulario_500UncheckedCreateWithoutItemsInput = {
   id?: number
   usuario_id: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3149,9 +3180,10 @@ export type formulario_500UpdateToOneWithWhereWithoutItemsInput = {
 
 export type formulario_500UpdateWithoutItemsInput = {
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3233,9 +3265,10 @@ export type formulario_500UncheckedUpdateWithoutItemsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   usuario_id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3315,9 +3348,10 @@ export type formulario_500UncheckedUpdateWithoutItemsInput = {
 export type formulario_500CreateManyPropietarioInput = {
   id?: number
   tipo_formulario: $Enums.tipo_formulario
+  nombre_formulario: string
   estado?: $Enums.estados
   fecha_de_creacion?: Date | string
-  fecha_actualizacion?: Date | string
+  fecha_actualizacion?: Date | string | null
   progreso?: number | null
   paso_actual?: number | null
   checklist: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3395,9 +3429,10 @@ export type formulario_500CreateManyPropietarioInput = {
 
 export type formulario_500UpdateWithoutPropietarioInput = {
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3478,9 +3513,10 @@ export type formulario_500UpdateWithoutPropietarioInput = {
 export type formulario_500UncheckedUpdateWithoutPropietarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3561,9 +3597,10 @@ export type formulario_500UncheckedUpdateWithoutPropietarioInput = {
 export type formulario_500UncheckedUpdateManyWithoutPropietarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   tipo_formulario?: Prisma.Enumtipo_formularioFieldUpdateOperationsInput | $Enums.tipo_formulario
+  nombre_formulario?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.EnumestadosFieldUpdateOperationsInput | $Enums.estados
   fecha_de_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  fecha_actualizacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   progreso?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paso_actual?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   checklist?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -3683,6 +3720,7 @@ export type formulario_500Select<ExtArgs extends runtime.Types.Extensions.Intern
   id?: boolean
   usuario_id?: boolean
   tipo_formulario?: boolean
+  nombre_formulario?: boolean
   estado?: boolean
   fecha_de_creacion?: boolean
   fecha_actualizacion?: boolean
@@ -3769,6 +3807,7 @@ export type formulario_500SelectCreateManyAndReturn<ExtArgs extends runtime.Type
   id?: boolean
   usuario_id?: boolean
   tipo_formulario?: boolean
+  nombre_formulario?: boolean
   estado?: boolean
   fecha_de_creacion?: boolean
   fecha_actualizacion?: boolean
@@ -3852,6 +3891,7 @@ export type formulario_500SelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   id?: boolean
   usuario_id?: boolean
   tipo_formulario?: boolean
+  nombre_formulario?: boolean
   estado?: boolean
   fecha_de_creacion?: boolean
   fecha_actualizacion?: boolean
@@ -3935,6 +3975,7 @@ export type formulario_500SelectScalar = {
   id?: boolean
   usuario_id?: boolean
   tipo_formulario?: boolean
+  nombre_formulario?: boolean
   estado?: boolean
   fecha_de_creacion?: boolean
   fecha_actualizacion?: boolean
@@ -4013,7 +4054,7 @@ export type formulario_500SelectScalar = {
   documento_funcionario?: boolean
 }
 
-export type formulario_500Omit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuario_id" | "tipo_formulario" | "estado" | "fecha_de_creacion" | "fecha_actualizacion" | "progreso" | "paso_actual" | "checklist" | "numero_formulario" | "clase_importador" | "tipo_declaracion" | "codigo" | "numero_formulario_anterior" | "anio_declaracion_exportacion" | "declaracion_exportacion" | "anio_declaracion" | "codigo_direccion_seccional" | "codigo_direccion_seccional_exportacion" | "nit_importador" | "dv_importador" | "razon_social_importador" | "direccion_seccional_importador" | "direccion_importador" | "telefono_importador" | "codigo_departamento" | "codigo_municipio" | "nit_secundario" | "dv_secundario" | "razon_social_declarante" | "tipo_usuario" | "codigo_usuario" | "documento_declarante" | "nombre_declarante" | "nombre_exportador" | "ciudad_exportador" | "pais_exportador" | "direccion_exportador" | "email_exportador" | "pais_procedencia" | "lugar_ingreso_mercancias" | "codigo_deposito" | "manifiesto_carga" | "fecha_llegada" | "documento_transporte" | "numero_factura" | "fecha_factura" | "modo_transporte" | "bandera_transporte" | "destino_mercancia" | "empresa_transportadora" | "tasa_cambio" | "valor_fob" | "valor_fletes" | "valor_seguros" | "valor_otros_gastos" | "suma_gastos" | "ajuste_valor" | "valor_aduana" | "base_gravable" | "porcentaje_arancel" | "valor_arancel" | "porcentaje_iva" | "valor_iva" | "total_liquidado" | "valor_pagos_anteriores" | "recibo_pago_anterior" | "fecha_pago_anterior" | "pago_total" | "adhesivo_banco" | "sello_banco" | "actuacion_aduanera" | "espacio_ministerio" | "numero_aceptacion" | "fecha_aceptacion" | "numero_levante" | "fecha_levante" | "nombre_funcionario" | "documento_funcionario", ExtArgs["result"]["formulario_500"]>
+export type formulario_500Omit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "usuario_id" | "tipo_formulario" | "nombre_formulario" | "estado" | "fecha_de_creacion" | "fecha_actualizacion" | "progreso" | "paso_actual" | "checklist" | "numero_formulario" | "clase_importador" | "tipo_declaracion" | "codigo" | "numero_formulario_anterior" | "anio_declaracion_exportacion" | "declaracion_exportacion" | "anio_declaracion" | "codigo_direccion_seccional" | "codigo_direccion_seccional_exportacion" | "nit_importador" | "dv_importador" | "razon_social_importador" | "direccion_seccional_importador" | "direccion_importador" | "telefono_importador" | "codigo_departamento" | "codigo_municipio" | "nit_secundario" | "dv_secundario" | "razon_social_declarante" | "tipo_usuario" | "codigo_usuario" | "documento_declarante" | "nombre_declarante" | "nombre_exportador" | "ciudad_exportador" | "pais_exportador" | "direccion_exportador" | "email_exportador" | "pais_procedencia" | "lugar_ingreso_mercancias" | "codigo_deposito" | "manifiesto_carga" | "fecha_llegada" | "documento_transporte" | "numero_factura" | "fecha_factura" | "modo_transporte" | "bandera_transporte" | "destino_mercancia" | "empresa_transportadora" | "tasa_cambio" | "valor_fob" | "valor_fletes" | "valor_seguros" | "valor_otros_gastos" | "suma_gastos" | "ajuste_valor" | "valor_aduana" | "base_gravable" | "porcentaje_arancel" | "valor_arancel" | "porcentaje_iva" | "valor_iva" | "total_liquidado" | "valor_pagos_anteriores" | "recibo_pago_anterior" | "fecha_pago_anterior" | "pago_total" | "adhesivo_banco" | "sello_banco" | "actuacion_aduanera" | "espacio_ministerio" | "numero_aceptacion" | "fecha_aceptacion" | "numero_levante" | "fecha_levante" | "nombre_funcionario" | "documento_funcionario", ExtArgs["result"]["formulario_500"]>
 export type formulario_500Include<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   items?: boolean | Prisma.formulario_500$itemsArgs<ExtArgs>
   propietario?: boolean | Prisma.usuarioDefaultArgs<ExtArgs>
@@ -4038,9 +4079,10 @@ export type $formulario_500Payload<ExtArgs extends runtime.Types.Extensions.Inte
     id: number
     usuario_id: number
     tipo_formulario: $Enums.tipo_formulario
+    nombre_formulario: string
     estado: $Enums.estados
     fecha_de_creacion: Date
-    fecha_actualizacion: Date
+    fecha_actualizacion: Date | null
     progreso: number | null
     paso_actual: number | null
     checklist: runtime.JsonValue
@@ -4543,6 +4585,7 @@ export interface formulario_500FieldRefs {
   readonly id: Prisma.FieldRef<"formulario_500", 'Int'>
   readonly usuario_id: Prisma.FieldRef<"formulario_500", 'Int'>
   readonly tipo_formulario: Prisma.FieldRef<"formulario_500", 'tipo_formulario'>
+  readonly nombre_formulario: Prisma.FieldRef<"formulario_500", 'String'>
   readonly estado: Prisma.FieldRef<"formulario_500", 'estados'>
   readonly fecha_de_creacion: Prisma.FieldRef<"formulario_500", 'DateTime'>
   readonly fecha_actualizacion: Prisma.FieldRef<"formulario_500", 'DateTime'>

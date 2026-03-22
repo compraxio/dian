@@ -1,10 +1,11 @@
 import { requireAuth } from '@/lib/auth';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdArticle, MdUploadFile, MdQuiz } from 'react-icons/md';
 import { Suspense } from 'react';
 import { TargetasDasboart } from '@/components/targetasDasboart';
 import { TargetasDasboartSkeleton } from '@/components/esqueleto/targetasDasboart';
+import { TargetasFormularioInicioSkeleton } from '@/components/esqueleto/targetasFormularioInicio';
+import { TargetasFormularioInicio } from '@/components/TargetasFormularioInicio';
 
 export default async function dashboard() {
   const usuario = await requireAuth();
@@ -28,63 +29,11 @@ export default async function dashboard() {
         <section className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-card overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700/50 flex items-center justify-between">
             <h3 className="text-lg font-bold">Actividad Reciente</h3>
-            <button className="text-sm text-primary font-semibold hover:underline">Ver todo</button>
           </div>
           <div className="divide-y divide-slate-100 dark:divide-slate-700/50">
-            <div className="px-6 py-4 flex items-center gap-4">
-              <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-700/50 flex items-center justify-center shrink-0">
-                <MdArticle className="text-slate-500" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">
-                  Formulario 210 - Declaración de Renta
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Borrador editado hace 2 horas
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-primary">
-                  En progreso
-                </span>
-              </div>
-            </div>
-            <div className="px-6 py-4 flex items-center gap-4">
-              <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-700/50 flex items-center justify-center shrink-0">
-                <MdUploadFile className="text-slate-500" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">
-                  RUT Actualizado - Persona Natural
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Documento cargado ayer a las 15:45
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
-                  Completado
-                </span>
-              </div>
-            </div>
-            <div className="px-6 py-4 flex items-center gap-4">
-              <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-700/50 flex items-center justify-center shrink-0">
-                <MdQuiz className="text-slate-500" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">
-                  Práctica: Retención en la Fuente
-                </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Finalizada el 12 de Octubre
-                </p>
-              </div>
-              <div className="text-right">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400">
-                  Calificado
-                </span>
-              </div>
-            </div>
+            <Suspense fallback={<TargetasFormularioInicioSkeleton />}>
+              <TargetasFormularioInicio usuario={usuario} />
+            </Suspense>
           </div>
         </section>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -72,9 +72,10 @@ model formulario_500 {
   id Int @id @default(autoincrement())
   usuario_id                             Int
   tipo_formulario                        tipo_formulario
+  nombre_formulario                      String
   estado                                 estados                @default(BORRADOR)
   fecha_de_creacion                      DateTime               @default(now())
-  fecha_actualizacion                    DateTime               @updatedAt
+  fecha_actualizacion                    DateTime?              @updatedAt
   progreso                               Int?
   paso_actual                            Int?
   checklist                              Json
